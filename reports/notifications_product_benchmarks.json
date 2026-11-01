@@ -1,0 +1,129 @@
+{
+  "method": "initial rules + evidence-gated semantic extraction; no model calls",
+  "documents": [
+    {
+      "pdf": "E:/NLP_Project/datasets/fixtures/nlp2/hindi/du_ncweb_admission_2024_hindi.pdf",
+      "process_cold_seconds": 0.49985419993754476,
+      "initial_seconds": 0.20462500001303852,
+      "warm_uncached_seconds": 0.18185049993917346,
+      "session_cache_seconds": 0.009685899945907295,
+      "pages": 23,
+      "routes": [
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf"
+      ],
+      "dates": 4,
+      "fees": 0,
+      "documents": 4,
+      "eligibility_extracted": true,
+      "advanced_review": "not run"
+    },
+    {
+      "pdf": "E:/NLP_Project/datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+      "process_cold_seconds": 0.39716899988707155,
+      "initial_seconds": 0.09171170007903129,
+      "warm_uncached_seconds": 0.08230400003958493,
+      "session_cache_seconds": 0.009874100098386407,
+      "pages": 3,
+      "routes": [
+        "native_pdf",
+        "native_pdf",
+        "native_pdf"
+      ],
+      "dates": 2,
+      "fees": 1,
+      "documents": 3,
+      "eligibility_extracted": true,
+      "advanced_review": "not run"
+    },
+    {
+      "pdf": "E:/NLP_Project/datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+      "process_cold_seconds": 0.3800058999331668,
+      "initial_seconds": 0.0746825000969693,
+      "warm_uncached_seconds": 0.0809356999816373,
+      "session_cache_seconds": 0.009834000025875866,
+      "pages": 4,
+      "routes": [
+        "native_pdf",
+        "native_pdf",
+        "native_pdf",
+        "native_pdf"
+      ],
+      "dates": 2,
+      "fees": 0,
+      "documents": 0,
+      "eligibility_extracted": false,
+      "advanced_review": "not run"
+    },
+    {
+      "pdf": "E:/NLP_Project/datasets/fixtures/nlp2/telugu/kv_kothuru_admission_2025_telugu.pdf",
+      "process_cold_seconds": 0.37053189997095615,
+      "initial_seconds": 0.0706351000117138,
+      "warm_uncached_seconds": 0.08119309996254742,
+      "session_cache_seconds": 0.011590300011448562,
+      "pages": 3,
+      "routes": [
+        "native_pdf",
+        "native_pdf",
+        "native_pdf"
+      ],
+      "dates": 7,
+      "fees": 0,
+      "documents": 4,
+      "eligibility_extracted": true,
+      "advanced_review": "not run"
+    },
+    {
+      "pdf": "E:/NLP_Project/datasets/fixtures/nlp2/telugu/kv_ramagundam_admission_2025_telugu.pdf",
+      "process_cold_seconds": 0.37569839996285737,
+      "initial_seconds": 0.07528839993756264,
+      "warm_uncached_seconds": 0.06019190000370145,
+      "session_cache_seconds": 0.010073599987663329,
+      "pages": 2,
+      "routes": [
+        "native_pdf",
+        "native_pdf"
+      ],
+      "dates": 1,
+      "fees": 0,
+      "documents": 0,
+      "eligibility_extracted": true,
+      "advanced_review": "not run"
+    }
+  ],
+  "excluded": [
+    {
+      "pdf": "E:\\NLP_Project\\datasets\\fixtures\\nlp2\\hindi\\kvs_admission_2025_hindi.pdf",
+      "reason": "contains a page requiring OCR; excluded from native-text latency target"
+    },
+    {
+      "pdf": "E:\\NLP_Project\\datasets\\fixtures\\nlp2\\hindi\\uttarakhand_residential_school_exam_2025_hindi.pdf",
+      "reason": "contains a page requiring OCR; excluded from native-text latency target"
+    },
+    {
+      "pdf": "E:\\NLP_Project\\datasets\\fixtures\\nlp2\\telugu\\tsemrs_admission_2024_telugu.pdf",
+      "reason": "contains a page requiring OCR; excluded from native-text latency target"
+    }
+  ]
+}

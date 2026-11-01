@@ -1,0 +1,41 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+.venv-*/
+.venv_friend_backup/
+.tools/
+dist/
+build/
+*.egg-info/
+*.log
+
+# NLP-1 runtime/cache artifacts (fixtures and provenance remain tracked).
+.cache/
+.tmp/
+.data/
+*.sqlite
+*.sqlite3
+*.db
+IndicNotice_Audit/
+.streamlit/secrets.toml
+artifacts/
+tests/.runtime/*
+!tests/.runtime/.gitkeep
+# Local command-output artifact; never part of the project.
+/t-Path demoapp.py
+# Local credentials, runtime state, browser sessions, and user uploads.
+.env
+.env.*
+!.env.example
+*.pid
+.playwright/
+playwright-report/
+test-results/
+.auth/
+browser-profile/
+chrome-profile/
+/uploads/
+/private_uploads/

@@ -1,0 +1,26 @@
+[
+  {
+    "document": "hindi_scert",
+    "language": "te",
+    "kind": "mixed",
+    "question": "దరఖాస్తు deadline ఏమిటి?",
+    "answer": "దరఖాస్తు గడువు: 2025-10-15",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citation_pages": [
+      1
+    ]
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "hi",
+    "kind": "mixed",
+    "question": "आवेदन deadline क्या है?",
+    "answer": "आवेदन की अंतिम तिथि: 2025-03-21",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citation_pages": [
+      1
+    ]
+  }
+]

@@ -1,0 +1,611 @@
+{
+  "generated_on": "2026-10-15",
+  "human_gold_gate": "OPEN",
+  "final_nlp6_scoring_started": false,
+  "qa": {
+    "total": 30,
+    "verification_states": {
+      "NEEDS_HUMAN_VERIFICATION": 30
+    },
+    "suggestions": {
+      "READY_TO_VERIFY": 29,
+      "AMBIGUOUS": 1
+    },
+    "items": [
+      {
+        "id": "hi-q01",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "hi-q02",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "hi-q03",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "hi-q04",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          2
+        ]
+      },
+      {
+        "id": "hi-q05",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "id": "hi-q06",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "id": "hi-q07",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "hi-q08",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "hi-q09",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "id": "hi-q10",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          2
+        ]
+      },
+      {
+        "id": "hi-q11",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": []
+      },
+      {
+        "id": "hi-q12",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": []
+      },
+      {
+        "id": "hi-q13",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "hi-q14",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": []
+      },
+      {
+        "id": "hi-q15",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "AMBIGUOUS",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "te-q01",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          1
+        ]
+      },
+      {
+        "id": "te-q02",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          1
+        ]
+      },
+      {
+        "id": "te-q03",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          1
+        ]
+      },
+      {
+        "id": "te-q04",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          1
+        ]
+      },
+      {
+        "id": "te-q05",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          2
+        ]
+      },
+      {
+        "id": "te-q06",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "te-q07",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": []
+      },
+      {
+        "id": "te-q08",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          2
+        ]
+      },
+      {
+        "id": "te-q09",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": []
+      },
+      {
+        "id": "te-q10",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": []
+      },
+      {
+        "id": "te-q11",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": []
+      },
+      {
+        "id": "te-q12",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": []
+      },
+      {
+        "id": "te-q13",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          1
+        ]
+      },
+      {
+        "id": "te-q14",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 1.0,
+        "pages": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "te-q15",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "citations_exist": true,
+        "semantic_support": 0.0,
+        "pages": [
+          2
+        ]
+      }
+    ]
+  },
+  "synthetic_semantic": {
+    "total": 20,
+    "verification_states": {
+      "NEEDS_HUMAN_VERIFICATION": 20
+    },
+    "suggestions": {
+      "READY_TO_VERIFY": 20
+    },
+    "items": [
+      {
+        "id": "hi-01",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-02",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-03",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-04",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-05",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-06",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-07",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-08",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-09",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "hi-10",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-01",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-02",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-03",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-04",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-05",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-06",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-07",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-08",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-09",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      },
+      {
+        "id": "te-10",
+        "verification_state": "NEEDS_HUMAN_VERIFICATION",
+        "suggestion": "READY_TO_VERIFY",
+        "schema_validation": "PASS",
+        "adapter_validation": "PASS"
+      }
+    ]
+  },
+  "candidate_profiles": {
+    "total": 13,
+    "consistent": 13,
+    "items": [
+      {
+        "id": "clear-pass",
+        "scenario_ref": "numeric-core",
+        "expected": "PASS",
+        "actual": "PASS",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "clear-fail",
+        "scenario_ref": "numeric-core",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "income-missing",
+        "scenario_ref": "numeric-core",
+        "expected": "UNKNOWN",
+        "actual": "UNKNOWN",
+        "consistent": true,
+        "missing_information": [
+          "annual_family_income_inr"
+        ],
+        "unambiguous": true
+      },
+      {
+        "id": "sc-relaxation",
+        "scenario_ref": "category-age-relaxation",
+        "expected": "PASS",
+        "actual": "PASS",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "general-no-relaxation",
+        "scenario_ref": "category-age-relaxation",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "category-missing",
+        "scenario_ref": "category-age-relaxation",
+        "expected": "UNKNOWN",
+        "actual": "UNKNOWN",
+        "consistent": true,
+        "missing_information": [
+          "category"
+        ],
+        "unambiguous": true
+      },
+      {
+        "id": "pwd-exemption",
+        "scenario_ref": "pwd-age-exemption",
+        "expected": "NOT_APPLICABLE",
+        "actual": "NOT_APPLICABLE",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "multiple-degrees",
+        "scenario_ref": "degree-alternative",
+        "expected": "PASS",
+        "actual": "PASS",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "age-boundary",
+        "scenario_ref": "cutoff-age",
+        "expected": "PASS",
+        "actual": "PASS",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "income-boundary",
+        "scenario_ref": "income-boundary",
+        "expected": "PASS",
+        "actual": "PASS",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "marks-below",
+        "scenario_ref": "marks-boundary",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "marks-exact",
+        "scenario_ref": "marks-boundary",
+        "expected": "PASS",
+        "actual": "PASS",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      },
+      {
+        "id": "marks-above",
+        "scenario_ref": "marks-boundary",
+        "expected": "PASS",
+        "actual": "PASS",
+        "consistent": true,
+        "missing_information": [],
+        "unambiguous": true
+      }
+    ]
+  },
+  "ambiguous_or_excluded": [
+    "hi-q15"
+  ],
+  "recommended_exclusions": [
+    {
+      "id": "hi-q15",
+      "reason": "QUESTION_AMBIGUITY / multiple valid interpretations"
+    }
+  ],
+  "special_attention_qa_ids": [
+    "hi-q05",
+    "hi-q06",
+    "hi-q07",
+    "hi-q08",
+    "hi-q09",
+    "hi-q13",
+    "hi-q15",
+    "te-q05",
+    "te-q07",
+    "te-q13",
+    "te-q14",
+    "te-q15"
+  ]
+}

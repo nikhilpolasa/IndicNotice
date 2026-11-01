@@ -1,0 +1,114 @@
+[
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "2face8e0eb902016933910a7930238d67210ec4942fad262a526551b76a38d6a",
+    "fixture_path": "datasets/fixtures/nlp1/hindi/nfc_recruitment_01_2026_hindi.pdf",
+    "language": "hi",
+    "document_status": "verified_partial",
+    "source_url": "https://www.nfc.gov.in/pdf/recruitment-advt/2026/adv-no-nfc_01_2026_hind.pdf",
+    "checked_on": "2026-10-12",
+    "fields": {
+      "category": {"status": "verified_complete", "value": "recruitment", "source_page": 1},
+      "notice_number": {"status": "verified_complete", "value": "NFC/01/2026", "source_page": 1, "source_excerpt": "विज्ञापन सं. एनएफसी/01/2026"},
+      "dates": {"status": "verified_partial", "items": [{"date_type": "application_open", "value": "2026-03-21", "time": "10:00"}, {"date_type": "application_deadline", "value": "2026-04-18", "time": "17:00"}], "source_page": 1},
+      "fees": {"status": "unverified"},
+      "eligibility": {"status": "verified_partial", "source_page": 1, "notes": "Page 1 contains post-specific age ranges; not exhaustive."}
+    }
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "6c629a75e959958859931e2a052712e760352bc2a2b261f91dd59f4acf0221b6",
+    "fixture_path": "datasets/fixtures/nlp1/telugu/ananthapuramu_anganwadi_recruitment_2025.pdf",
+    "language": "te",
+    "document_status": "verified_partial",
+    "source_url": "https://cdn.s3waas.gov.in/s333e8075e9970de0cfea955afd4644bb2/uploads/2025/12/17664699117464.pdf",
+    "checked_on": "2026-10-12",
+    "fields": {
+      "category": {"status": "verified_complete", "value": "recruitment", "source_page": 1},
+      "notice_number": {"status": "verified_complete", "value": "233226", "source_page": 1},
+      "dates": {"status": "verified_partial", "items": [{"date_type": "publication_date", "value": "2025-12-22", "time": null}], "source_page": 1},
+      "eligibility": {"status": "verified_partial", "source_page": 1, "notes": "Page 1 states a general 21-35 age band and an SC/ST relaxation; later pages not exhaustively annotated."},
+      "fees": {"status": "unverified", "notes": "Salary figures on page 1 are negative examples, not fees."}
+    }
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "d2558ed06f6a7a1733abf9971e97517399984718291bc1ae1588f61142e4222c",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/du_ncweb_admission_2024_hindi.pdf",
+    "language": "hi",
+    "document_status": "verified_partial",
+    "source_url": "https://admission.uod.ac.in/userfiles/downloads/02052024_UG-BOI-NCWEB_compressed.pdf",
+    "checked_on": "2026-10-13",
+    "fields": {"category": {"status": "verified_complete", "value": "admission", "source_page": 1}, "title": {"status": "verified_partial", "value": "प्रवेश सूचना विवरणिका 2024-2025", "source_page": 1}}
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "42dbb686075bb86b1942143d199e151d6006fb9d2da897fb4e2d11006986aece",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/kvs_admission_2025_hindi.pdf",
+    "language": "hi",
+    "document_status": "verified_partial",
+    "source_url": "https://cdnbbsr.s3waas.gov.in/s3kv05ac1b53741fac7deb8b0ec49bb694/uploads/2025/03/2025030546.pdf",
+    "checked_on": "2026-10-13",
+    "fields": {"category": {"status": "verified_complete", "value": "admission", "source_page": 1}, "title": {"status": "verified_partial", "value": "प्रवेश सूचना 2025-26", "source_page": 1}, "dates": {"status": "verified_partial", "source_page": 1}}
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "language": "hi",
+    "document_status": "verified_partial",
+    "source_url": "https://cdnbbsr.s3waas.gov.in/s323d2e1578544b172cca332ff74bddf5f/uploads/2025/09/202509051500147525.pdf",
+    "checked_on": "2026-10-13",
+    "fields": {"category": {"status": "verified_complete", "value": "scholarship", "source_page": 1}, "fees": {"status": "verified_complete", "items": [{"fee_type": "application_fee", "amount_inr": 0.0, "applies_to_category": null}], "source_page": 2, "source_excerpt": "इस परीक्षा के लिए कोई शुल्क नहीं लिया जायेगा"}, "dates": {"status": "verified_partial", "source_page": [1, 3]}, "eligibility": {"status": "verified_partial", "source_page": 2}, "required_documents": {"status": "verified_partial", "source_page": 3}}
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "181d39783474ea218a9a66f7547cd745c258394cb27152c493befee4a1bb9cd1",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/uttarakhand_residential_school_exam_2025_hindi.pdf",
+    "language": "hi",
+    "document_status": "verified_partial",
+    "source_url": "https://cdnbbsr.s3waas.gov.in/s32dbf21633f03afcf882eaf10e4b5caca/uploads/2025/06/202506031033173496.pdf",
+    "checked_on": "2026-10-13",
+    "fields": {"category": {"status": "verified_complete", "value": "admission", "source_page": 1}, "dates": {"status": "template_only"}, "eligibility": {"status": "template_only"}, "required_documents": {"status": "template_only"}}
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "language": "te",
+    "document_status": "verified_partial",
+    "source_url": "https://cdnbbsr.s3waas.gov.in/s3kv01e8ad71f19b15f13fec3bc3a9094f/uploads/2025/03/2025031593.pdf",
+    "checked_on": "2026-10-13",
+    "fields": {"category": {"status": "verified_complete", "value": "admission", "source_page": 1}, "dates": {"status": "verified_partial", "source_page": 1}, "actions": {"status": "verified_partial", "source_page": 1}}
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "3b87a2b47bc4fa2f76ed4f533b34b223c1353514bc6039144470b41a449d177d",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kothuru_admission_2025_telugu.pdf",
+    "language": "te",
+    "document_status": "verified_partial",
+    "source_url": "https://cdnbbsr.s3waas.gov.in/s3kv01953ce312e6b0ea48522bf39cbe62/uploads/2025/05/2025051620.pdf",
+    "checked_on": "2026-10-13",
+    "fields": {"category": {"status": "verified_complete", "value": "admission", "source_page": 1}, "dates": {"status": "verified_partial", "source_page": 1}}
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "8fee85de2250fc45c3c1f96f4d10f6d2151e768e35bcb59dff30cb2a2a085849",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_ramagundam_admission_2025_telugu.pdf",
+    "language": "te",
+    "document_status": "verified_partial",
+    "source_url": "https://cdnbbsr.s3waas.gov.in/s3kv01cba59a60eb0eb005eba81049fb22/uploads/2025/05/2025051590.pdf",
+    "checked_on": "2026-10-13",
+    "fields": {"category": {"status": "verified_complete", "value": "admission", "source_page": 1}, "dates": {"status": "verified_partial", "source_page": 1}, "eligibility": {"status": "verified_partial", "source_page": 1}}
+  },
+  {
+    "annotation_version": "nlp2-gold-v1",
+    "document_id": "72b08072c1d648df1570cf6fab5c408ca0a1ebacf3df3ce0f7be20491e41efbc",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/tsemrs_admission_2024_telugu.pdf",
+    "language": "te",
+    "document_status": "verified_partial",
+    "source_url": "https://tsemrs.telangana.gov.in/openfile.php?f=160",
+    "checked_on": "2026-10-13",
+    "fields": {"category": {"status": "verified_complete", "value": "admission", "source_page": 1}, "dates": {"status": "verified_partial", "source_page": 1}, "fees": {"status": "verified_partial", "source_page": 1}, "eligibility": {"status": "verified_partial", "source_page": 1}}
+  }
+]

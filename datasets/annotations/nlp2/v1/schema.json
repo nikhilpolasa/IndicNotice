@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://indicnotice.local/schemas/nlp2-gold-v1.json",
+  "title": "IndicNotice NLP-2 Gold Annotation v1",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["annotation_version", "document_id", "fixture_path", "language", "document_status", "fields"],
+    "properties": {
+      "annotation_version": {"const": "nlp2-gold-v1"},
+      "document_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+      "fixture_path": {"type": "string"},
+      "language": {"enum": ["hi", "te"]},
+      "document_status": {"enum": ["verified_partial", "verified_complete", "unverified", "template_only"]},
+      "source_url": {"type": "string"},
+      "checked_on": {"type": ["string", "null"], "format": "date"},
+      "fields": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": {"enum": ["verified_complete", "verified_partial", "unverified", "template_only"]},
+            "value": {},
+            "items": {"type": "array"},
+            "source_page": {"type": ["integer", "array", "null"]},
+            "source_excerpt": {"type": ["string", "null"]},
+            "notes": {"type": ["string", "null"]}
+          }
+        }
+      },
+      "notes": {"type": ["string", "null"]}
+    }
+  }
+}

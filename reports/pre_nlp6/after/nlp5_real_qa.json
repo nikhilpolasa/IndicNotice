@@ -1,0 +1,880 @@
+{
+  "milestone": "NLP-5",
+  "run_date": "2026-10-14",
+  "method": "schema-first-grounded-qa-nlp5-v1",
+  "retrieval_method": "unicode-bm25-nlp5-v1",
+  "generator": {
+    "status": "NOT_RUN",
+    "reason": "Structured/extractive QA satisfies the real smoke run; Qwen QA generation was not marked tested without a separate real inference.",
+    "validation_available": [
+      "retrieved-context-only",
+      "citation subset",
+      "document membership",
+      "critical numeric and URL support"
+    ]
+  },
+  "annotation_set": {
+    "items": 30,
+    "verification_states": {
+      "NEEDS_HUMAN_VERIFICATION": 30
+    },
+    "question_languages": {
+      "en": 11,
+      "hi": 10,
+      "te": 9
+    },
+    "answerability_candidates": {
+      "ANSWERABLE": 19,
+      "PARTIAL": 3,
+      "UNANSWERABLE": 8
+    },
+    "scored_gold_items": 0
+  },
+  "qa_metrics": {
+    "verified_items": 0,
+    "answerability_accuracy": null,
+    "exact_match": null,
+    "token_f1": null,
+    "citation_validity": null,
+    "citation_support_accuracy": null,
+    "unsupported_answer_rate": null,
+    "abstention_accuracy": null,
+    "eligibility_decision_accuracy": null,
+    "missing_information_accuracy": null,
+    "status": "NOT_SCORED",
+    "reason": "All 30 items require human verification."
+  },
+  "real_smoke": [
+    {
+      "case_id": "hi-structured",
+      "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+      "notice_language": "hi",
+      "question": "आवेदन की अंतिम तिथि क्या है?",
+      "candidate_profile": null,
+      "response": {
+        "answer_text": "आवेदन की अंतिम तिथि: 2025-10-15।",
+        "answer_mode": "STRUCTURED_FACT",
+        "answerability": "ANSWERABLE",
+        "intent": "DEADLINE",
+        "citations": [
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6",
+            "page_number": 1,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6",
+            "text": "ऑनलाइन आवेदन-पत्र भरने की अंतिम तिथि\n\n15 अक्तूबर 2025"
+          }
+        ],
+        "structured_source_field": "dates.application_deadline",
+        "eligibility_result": null,
+        "condition_explanations": [],
+        "missing_information": [],
+        "warnings": [],
+        "abstained": false,
+        "answer_language": "hi",
+        "retrieval_method": null
+      },
+      "citation_validity": 1.0,
+      "retrieval": [
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b0",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 3,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b0",
+          "text": "ऑनलाइन आवेदन की अंतिम तिथि 15 अक्तूबर 2025 है |",
+          "retrieval_score": 9.534262522802539,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 1,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6",
+          "text": "ऑनलाइन आवेदन-पत्र भरने की अंतिम तिथि\n\n15 अक्तूबर 2025",
+          "retrieval_score": 8.636822407354082,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b1",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 3,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b1",
+          "text": "अंतिम तिथि ककसी भी जस्िति में नहीं बढाई जाएगी|",
+          "retrieval_score": 6.809898573470447,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b9",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 3,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b9",
+          "text": "परीिा की तिथि\n\nसमय",
+          "retrieval_score": 4.191444203107468,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b11",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 2,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b11",
+          "text": "आवेदन करिे समय अपलोर् करें|",
+          "retrieval_score": 2.6454449140997345,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        }
+      ]
+    },
+    {
+      "case_id": "hi-retrieval",
+      "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+      "notice_language": "hi",
+      "question": "What annual family income limit is stated?",
+      "candidate_profile": null,
+      "response": {
+        "answer_text": "Relevant notice text: वपिा की कुि आय का प्रमाण-पत्र SDM/ िहसीलदार से सत्यावपि करा कर अपने जजले के जजला समन्वयक कायाडलय, •\nपरीिािी के मािा-वपिा की सभी स्त्रोिों से कुि वावषिक आय ₹ 3,50,000 से कम होनी चादहये|\n\nनोट",
+        "answer_mode": "EVIDENCE_RETRIEVAL",
+        "answerability": "ANSWERABLE",
+        "intent": "OTHER_NOTICE_QUESTION",
+        "citations": [
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b20",
+            "page_number": 3,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b20",
+            "text": "वपिा की कुि आय का प्रमाण-पत्र SDM/ िहसीलदार से सत्यावपि करा कर अपने जजले के जजला समन्वयक कायाडलय,"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+            "text": "•\nपरीिािी के मािा-वपिा की सभी स्त्रोिों से कुि वावषिक आय ₹ 3,50,000 से कम होनी चादहये|\n\nनोट"
+          }
+        ],
+        "structured_source_field": null,
+        "eligibility_result": null,
+        "condition_explanations": [],
+        "missing_information": [],
+        "warnings": [],
+        "abstained": false,
+        "answer_language": "en",
+        "retrieval_method": "unicode-bm25-nlp5-v1"
+      },
+      "citation_validity": 1.0,
+      "retrieval": [
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b20",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 3,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b20",
+          "text": "वपिा की कुि आय का प्रमाण-पत्र SDM/ िहसीलदार से सत्यावपि करा कर अपने जजले के जजला समन्वयक कायाडलय,",
+          "retrieval_score": 2.8840451341943107,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 2,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+          "text": "•\nपरीिािी के मािा-वपिा की सभी स्त्रोिों से कुि वावषिक आय ₹ 3,50,000 से कम होनी चादहये|\n\nनोट",
+          "retrieval_score": 2.785437496839982,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        }
+      ]
+    },
+    {
+      "case_id": "hi-unanswerable",
+      "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+      "notice_language": "hi",
+      "question": "What is the interview venue?",
+      "candidate_profile": null,
+      "response": {
+        "answer_text": "This information is not stated in this notice.",
+        "answer_mode": "NOT_STATED",
+        "answerability": "UNANSWERABLE",
+        "intent": "VENUE",
+        "citations": [],
+        "structured_source_field": null,
+        "eligibility_result": null,
+        "condition_explanations": [],
+        "missing_information": [],
+        "warnings": [],
+        "abstained": true,
+        "answer_language": "en",
+        "retrieval_method": null
+      },
+      "citation_validity": 1.0,
+      "retrieval": []
+    },
+    {
+      "case_id": "te-structured",
+      "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+      "notice_language": "te",
+      "question": "దరఖాస్తు చివరి తేదీ ఏమిటి?",
+      "candidate_profile": null,
+      "response": {
+        "answer_text": "దరఖాస్తు చివరి తేదీ: 2025-03-21.",
+        "answer_mode": "STRUCTURED_FACT",
+        "answerability": "ANSWERABLE",
+        "intent": "DEADLINE",
+        "citations": [
+          {
+            "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b5",
+            "page_number": 1,
+            "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b5",
+            "text": "• Last Date for Submission of Online Applications: 21st March 2025"
+          }
+        ],
+        "structured_source_field": "dates.application_deadline",
+        "eligibility_result": null,
+        "condition_explanations": [],
+        "missing_information": [],
+        "warnings": [],
+        "abstained": false,
+        "answer_language": "te",
+        "retrieval_method": null
+      },
+      "citation_validity": 1.0,
+      "retrieval": [
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b6",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 1,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b6",
+          "text": "• Mode of Application: Online only (Please visit the official KVS\nadmission portal)",
+          "retrieval_score": 3.7016445706373564,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b7",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 1,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b7",
+          "text": "• We advise all interested candidates to submit their applications before\nthe last date to ensure timely processing. Please apply in your\ncategory only. Kindly visit the official KVS website for further\ndetails regarding the eligibility criteria, required documents, and the\nadmission procedure.",
+          "retrieval_score": 3.2437830736151305,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b5",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 1,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b5",
+          "text": "• Last Date for Submission of Online Applications: 21st March 2025",
+          "retrieval_score": 3.0642361060888437,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p3:b7",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 3,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p3:b7",
+          "text": "• దరఖాస్తు విధానం: ఆన్‌లైన్‌లో మాద్రత్మే (దయచేసి అధికార్చక KVS అడ్మిషన పోరటల్‌న సందర్చశంచండ్మ)",
+          "retrieval_score": 2.917665020307914,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p4:b3",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 4,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p4:b3",
+          "text": "•్‌ ऑनिाइन आवेदन की आरोंभ भतभि: 7 मािष 2025",
+          "retrieval_score": 2.7746492531958658,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        }
+      ]
+    },
+    {
+      "case_id": "te-retrieval",
+      "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+      "notice_language": "te",
+      "question": "What is admission preference based on?",
+      "candidate_profile": null,
+      "response": {
+        "answer_text": "Relevant notice text: DETAILS OF PRIORITY CATEGORIES FOR ADMISSION IN CLASS categories 1 to 4 listed above\nNote: Preference in Admission to wards will be based on the number of\ntransfers of the parents in the last 7 years\nFor online Registration follow the link:\nClass-1:https://kvsonlineadmission.kvs.gov.in\nBalvatika-III: https://balvatika.kvs.gov.in/\nFor Further Admission Guidelines and admission Notice please\nscan the QR code below: Here is a table showing the priority category system for the KVS",
+        "answer_mode": "EVIDENCE_RETRIEVAL",
+        "answerability": "ANSWERABLE",
+        "intent": "OTHER_NOTICE_QUESTION",
+        "citations": [
+          {
+            "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b0",
+            "page_number": 2,
+            "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b0",
+            "text": "DETAILS OF PRIORITY CATEGORIES FOR ADMISSION IN CLASS"
+          },
+          {
+            "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12",
+            "page_number": 2,
+            "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12",
+            "text": "categories 1 to 4 listed above\nNote: Preference in Admission to wards will be based on the number of\ntransfers of the parents in the last 7 years\nFor online Registration follow the link:\nClass-1:https://kvsonlineadmission.kvs.gov.in\nBalvatika-III: https://balvatika.kvs.gov.in/\nFor Further Admission Guidelines and admission Notice please\nscan the QR code below:"
+          },
+          {
+            "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b2",
+            "page_number": 2,
+            "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b2",
+            "text": "Here is a table showing the priority category system for the KVS"
+          }
+        ],
+        "structured_source_field": null,
+        "eligibility_result": null,
+        "condition_explanations": [],
+        "missing_information": [],
+        "warnings": [],
+        "abstained": false,
+        "answer_language": "en",
+        "retrieval_method": "unicode-bm25-nlp5-v1"
+      },
+      "citation_validity": 1.0,
+      "retrieval": [
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b0",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 2,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b0",
+          "text": "DETAILS OF PRIORITY CATEGORIES FOR ADMISSION IN CLASS",
+          "retrieval_score": 6.535578828963006,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 2,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12",
+          "text": "categories 1 to 4 listed above\nNote: Preference in Admission to wards will be based on the number of\ntransfers of the parents in the last 7 years\nFor online Registration follow the link:\nClass-1:https://kvsonlineadmission.kvs.gov.in\nBalvatika-III: https://balvatika.kvs.gov.in/\nFor Further Admission Guidelines and admission Notice please\nscan the QR code below:",
+          "retrieval_score": 6.215658870912227,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b2",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 2,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b2",
+          "text": "Here is a table showing the priority category system for the KVS",
+          "retrieval_score": 3.6175618185867378,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p3:b1",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 3,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p3:b1",
+          "text": "కేంద్రీ\nయ విద్యాలయ సేంగతన్ (KVS) క్లాస్\nI & బాలవాటిక-III అడ్మిషన్\nషెడ్యాల్ – 2025-2026",
+          "retrieval_score": 3.2879534262757057,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b3",
+          "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+          "page_number": 2,
+          "block_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b3",
+          "text": "admission process:",
+          "retrieval_score": 3.0138874813558445,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        }
+      ]
+    },
+    {
+      "case_id": "te-unanswerable",
+      "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+      "notice_language": "te",
+      "question": "పరీక్ష వేదిక ఎక్కడ ఉంది?",
+      "candidate_profile": null,
+      "response": {
+        "answer_text": "ఈ సమాచారం ఈ నోటీసులో పేర్కొనబడలేదు.",
+        "answer_mode": "NOT_STATED",
+        "answerability": "UNANSWERABLE",
+        "intent": "VENUE",
+        "citations": [],
+        "structured_source_field": null,
+        "eligibility_result": null,
+        "condition_explanations": [],
+        "missing_information": [],
+        "warnings": [],
+        "abstained": true,
+        "answer_language": "te",
+        "retrieval_method": null
+      },
+      "citation_validity": 1.0,
+      "retrieval": []
+    },
+    {
+      "case_id": "hi-eligibility",
+      "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+      "notice_language": "hi",
+      "question": "Am I eligible?",
+      "candidate_profile": {
+        "marks_percentage": 60,
+        "annual_family_income_inr": 300000
+      },
+      "response": {
+        "answer_text": "Eligibility cannot yet be determined. Missing information: attempt_count, current_class, current_school_type, previous_class, previous_school_type.",
+        "answer_mode": "ELIGIBILITY_RESULT",
+        "answerability": "PARTIAL",
+        "intent": "ELIGIBILITY",
+        "citations": [
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21",
+            "text": "•\nछात्रों ने सातवीं कक्षा केवि सरकारी/ अनुदान प्राप्त ववद्याियों से 55% अंकों से पास की हो|"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b3",
+            "page_number": 1,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b3",
+            "text": "(कक्षा आठवी में अध्ययनरत ववद्यार्थियों के लिए)"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b20",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b20",
+            "text": "•\nछात्र हररयाणा राज्य के केवि सरकारी/ अनुदान प्राप्त ववद्याियों में पढ़ रहें हों|"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+            "text": "•\nपरीिािी के मािा-वपिा की सभी स्त्रोिों से कुि वावषिक आय ₹ 3,50,000 से कम होनी चादहये|\n\nनोट"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b23",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b23",
+            "text": "•\nववद्यािी इस परीिा में केवल एक बार बैठ सकिा/ सकिी है|"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b26",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b26",
+            "text": "•\nआठवीं किा का अनुिीणड ववद्यािी इस परीिा में नहीं बैठ सकिा/ सकिी|"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b27",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b27",
+            "text": "•\nकेंद्रीय ववद्यािय, जवाहर नवोदय ववद्यािय, KGBV, ककसी भी आवासीय ववद्यािय तथा तनजी (Private)"
+          }
+        ],
+        "structured_source_field": "eligibility",
+        "eligibility_result": "UNKNOWN",
+        "condition_explanations": [
+          {
+            "condition_id": "cond_001",
+            "requirement": "marks_percentage >= 55.0",
+            "candidate_value": 60,
+            "computed_value": 60,
+            "status": "PASS",
+            "reason": "'marks_percentage' >= 55.0 %: candidate has 60 → PASS",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_001",
+            "requirement": "current_class == 8",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'current_class' not in candidate profile; cannot evaluate == 8",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b3"
+            ],
+            "source_pages": [
+              1
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_002",
+            "requirement": "current_school_type IN ['government_aided', 'government']",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'current_school_type' not in candidate profile; cannot evaluate IN ['government_aided', 'government']",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b20"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_004",
+            "requirement": "previous_class == 7",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'previous_class' not in candidate profile; cannot evaluate == 7",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_005",
+            "requirement": "previous_school_type IN ['government_aided', 'government']",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'previous_school_type' not in candidate profile; cannot evaluate IN ['government_aided', 'government']",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_006",
+            "requirement": "annual_family_income_inr < 350000.0",
+            "candidate_value": 300000,
+            "computed_value": 300000,
+            "status": "PASS",
+            "reason": "'annual_family_income_inr' < 350000.0 INR: candidate has 300000 → PASS",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_007",
+            "requirement": "attempt_count <= 1",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'attempt_count' not in candidate profile; cannot evaluate <= 1",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b23"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_008",
+            "requirement": "current_school_type NOT_IN ['private', 'jawahar_navodaya_vidyalaya', 'kgbv']",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'current_school_type' not in candidate profile; cannot evaluate NOT_IN ['private', 'jawahar_navodaya_vidyalaya', 'kgbv']",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b26",
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b27"
+            ],
+            "source_pages": [
+              2
+            ]
+          }
+        ],
+        "missing_information": [
+          "attempt_count",
+          "current_class",
+          "current_school_type",
+          "previous_class",
+          "previous_school_type"
+        ],
+        "warnings": [],
+        "abstained": false,
+        "answer_language": "en",
+        "retrieval_method": null
+      },
+      "citation_validity": 1.0,
+      "retrieval": [
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b18",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 2,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b18",
+          "text": "पात्रता:",
+          "retrieval_score": 7.008237860073737,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b13",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 1,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b13",
+          "text": "भाग 1: मानलसक योग्यता परीक्षण (Mental Ability Test)",
+          "retrieval_score": 3.653497182608563,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b16",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 1,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b16",
+          "text": "भाग 2: बौद्र्धक योग्यता परीक्षण (Scholastic Ability Test)",
+          "retrieval_score": 3.653497182608563,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b7",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 2,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b7",
+          "text": "है, जजसे आगे जजला स्िर पर बांटा जायेगा I जजला स्िर पर चयतनि ववद्याथिडयों को जजले के कोटे के अनुसार छात्रवृति",
+          "retrieval_score": 3.06942261216821,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b2",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 1,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b2",
+          "text": "Ph.No. 0124-4066243\nराष्ट्रीय साधन सह योग्यता छात्रवृतत योजना (NMMSS) परीक्षा 2025-26",
+          "retrieval_score": 2.818338465144819,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        }
+      ]
+    },
+    {
+      "case_id": "hi-eligibility-missing",
+      "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+      "notice_language": "hi",
+      "question": "What information is missing to determine my eligibility?",
+      "candidate_profile": {
+        "marks_percentage": 60
+      },
+      "response": {
+        "answer_text": "Eligibility cannot yet be determined. Missing information: annual_family_income_inr, attempt_count, current_class, current_school_type, previous_class, previous_school_type.",
+        "answer_mode": "ELIGIBILITY_RESULT",
+        "answerability": "PARTIAL",
+        "intent": "ELIGIBILITY",
+        "citations": [
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21",
+            "text": "•\nछात्रों ने सातवीं कक्षा केवि सरकारी/ अनुदान प्राप्त ववद्याियों से 55% अंकों से पास की हो|"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b3",
+            "page_number": 1,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b3",
+            "text": "(कक्षा आठवी में अध्ययनरत ववद्यार्थियों के लिए)"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b20",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b20",
+            "text": "•\nछात्र हररयाणा राज्य के केवि सरकारी/ अनुदान प्राप्त ववद्याियों में पढ़ रहें हों|"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+            "text": "•\nपरीिािी के मािा-वपिा की सभी स्त्रोिों से कुि वावषिक आय ₹ 3,50,000 से कम होनी चादहये|\n\nनोट"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b23",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b23",
+            "text": "•\nववद्यािी इस परीिा में केवल एक बार बैठ सकिा/ सकिी है|"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b26",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b26",
+            "text": "•\nआठवीं किा का अनुिीणड ववद्यािी इस परीिा में नहीं बैठ सकिा/ सकिी|"
+          },
+          {
+            "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b27",
+            "page_number": 2,
+            "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b27",
+            "text": "•\nकेंद्रीय ववद्यािय, जवाहर नवोदय ववद्यािय, KGBV, ककसी भी आवासीय ववद्यािय तथा तनजी (Private)"
+          }
+        ],
+        "structured_source_field": "eligibility",
+        "eligibility_result": "UNKNOWN",
+        "condition_explanations": [
+          {
+            "condition_id": "cond_001",
+            "requirement": "marks_percentage >= 55.0",
+            "candidate_value": 60,
+            "computed_value": 60,
+            "status": "PASS",
+            "reason": "'marks_percentage' >= 55.0 %: candidate has 60 → PASS",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_001",
+            "requirement": "current_class == 8",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'current_class' not in candidate profile; cannot evaluate == 8",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b3"
+            ],
+            "source_pages": [
+              1
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_002",
+            "requirement": "current_school_type IN ['government_aided', 'government']",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'current_school_type' not in candidate profile; cannot evaluate IN ['government_aided', 'government']",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b20"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_004",
+            "requirement": "previous_class == 7",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'previous_class' not in candidate profile; cannot evaluate == 7",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_005",
+            "requirement": "previous_school_type IN ['government_aided', 'government']",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'previous_school_type' not in candidate profile; cannot evaluate IN ['government_aided', 'government']",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_006",
+            "requirement": "annual_family_income_inr < 350000.0",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'annual_family_income_inr' not in candidate profile; cannot evaluate < 350000.0",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_007",
+            "requirement": "attempt_count <= 1",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'attempt_count' not in candidate profile; cannot evaluate <= 1",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b23"
+            ],
+            "source_pages": [
+              2
+            ]
+          },
+          {
+            "condition_id": "nlp4_cond_008",
+            "requirement": "current_school_type NOT_IN ['private', 'jawahar_navodaya_vidyalaya', 'kgbv']",
+            "candidate_value": null,
+            "computed_value": null,
+            "status": "UNKNOWN",
+            "reason": "Attribute 'current_school_type' not in candidate profile; cannot evaluate NOT_IN ['private', 'jawahar_navodaya_vidyalaya', 'kgbv']",
+            "evidence_ids": [
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b26",
+              "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b27"
+            ],
+            "source_pages": [
+              2
+            ]
+          }
+        ],
+        "missing_information": [
+          "annual_family_income_inr",
+          "attempt_count",
+          "current_class",
+          "current_school_type",
+          "previous_class",
+          "previous_school_type"
+        ],
+        "warnings": [],
+        "abstained": false,
+        "answer_language": "en",
+        "retrieval_method": null
+      },
+      "citation_validity": 1.0,
+      "retrieval": [
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b18",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 2,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b18",
+          "text": "पात्रता:",
+          "retrieval_score": 7.008237860073737,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b13",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 1,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b13",
+          "text": "भाग 1: मानलसक योग्यता परीक्षण (Mental Ability Test)",
+          "retrieval_score": 3.653497182608563,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b16",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 1,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b16",
+          "text": "भाग 2: बौद्र्धक योग्यता परीक्षण (Scholastic Ability Test)",
+          "retrieval_score": 3.653497182608563,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        },
+        {
+          "evidence_id": "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b2",
+          "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+          "page_number": 1,
+          "block_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b2",
+          "text": "Ph.No. 0124-4066243\nराष्ट्रीय साधन सह योग्यता छात्रवृतत योजना (NMMSS) परीक्षा 2025-26",
+          "retrieval_score": 2.818338465144819,
+          "retrieval_method": "unicode-bm25-nlp5-v1"
+        }
+      ]
+    }
+  ],
+  "real_smoke_summary": {
+    "cases": 8,
+    "valid_citation_cases": 8,
+    "abstentions": 2,
+    "modes": {
+      "STRUCTURED_FACT": 2,
+      "EVIDENCE_RETRIEVAL": 2,
+      "NOT_STATED": 2,
+      "ELIGIBILITY_RESULT": 2
+    }
+  },
+  "baselines": {
+    "A_structured_lookup_only": "Implemented and exercised for canonical fields.",
+    "B_lexical_retrieval_extractive": "Implemented and exercised with Unicode BM25 scores.",
+    "proposed_schema_retrieval_optional_generation": "Implemented; real smoke used deterministic/extractive path, optional generation not run."
+  },
+  "limitations": [
+    "The QA review set is not human-verified and produces no quality metric.",
+    "Lexical concept expansion is bounded and cross-lingual recall remains limited.",
+    "The real smoke set has two notices and is not a benchmark."
+  ]
+}

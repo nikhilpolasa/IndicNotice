@@ -1,0 +1,16 @@
+{
+  "browser": "Chrome CDP, authenticated isolated user session",
+  "notification_count": 0,
+  "warm_app_navigation": {
+    "samples_seconds": [
+      1.266772,
+      0.248038,
+      0.886498,
+      0.625189,
+      0.228583
+    ],
+    "mean_seconds": 0.651016
+  },
+  "notifications_page_render_empty_state_seconds": 0.419086,
+  "note": "This isolated user's page was empty; populated notification rendering is verified in the separate browser acceptance flow."
+}

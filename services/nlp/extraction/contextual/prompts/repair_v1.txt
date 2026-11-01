@@ -1,0 +1,6 @@
+The previous JSON failed strict validation. Correct only the listed problems using
+the same document evidence. Do not add new facts. Return the complete corrected
+JSON object and nothing else.
+
+Validation problems:
+{validation_errors}

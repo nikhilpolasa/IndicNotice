@@ -1,0 +1,591 @@
+[
+  {
+    "qa_id": "hi-q01",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "What is the application deadline?",
+    "question_language": "en",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "2025-10-15",
+    "expected_source_field": "dates.application_deadline",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice",
+    "acceptable_evidence_groups": [
+      [
+        "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6"
+      ],
+      [
+        "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b0"
+      ]
+    ]
+  },
+  {
+    "qa_id": "hi-q02",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "आवेदन की अंतिम तिथि क्या है?",
+    "question_language": "hi",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "2025-10-15",
+    "expected_source_field": "dates.application_deadline",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice",
+    "acceptable_evidence_groups": [
+      [
+        "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6"
+      ],
+      [
+        "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b0"
+      ]
+    ]
+  },
+  {
+    "qa_id": "hi-q03",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "దరఖాస్తు చివరి తేదీ ఏమిటి?",
+    "question_language": "te",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "2025-10-15",
+    "expected_source_field": "dates.application_deadline",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice",
+    "acceptable_evidence_groups": [
+      [
+        "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b6"
+      ],
+      [
+        "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b0"
+      ]
+    ]
+  },
+  {
+    "qa_id": "hi-q04",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "Is there an application fee?",
+    "question_language": "en",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "No application fee; ₹0.",
+    "expected_source_field": "fees",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b25"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q05",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "कौन से दस्तावेज चाहिए?",
+    "question_language": "hi",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Income certificate after selection; caste certificate for SC/ST students; and disability certificate for candidates with disabilities. Aadhaar details are used for date of birth, but an Aadhaar upload is not explicitly required.",
+    "expected_source_field": "required_documents",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b12",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b13",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b19",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b20",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b22",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b23",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b25",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b26"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q06",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "దరఖాస్తు లింక్ ఏమిటి?",
+    "question_language": "te",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "The notice says the online application link will be available on https://www.scertharyana.gov.in and https://www.bseh.org.in.",
+    "expected_source_field": "links",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b2",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b3"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice",
+    "acceptable_evidence_groups": [
+      [
+        "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b2",
+        "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b3"
+      ]
+    ]
+  },
+  {
+    "qa_id": "hi-q07",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "Am I eligible?",
+    "question_language": "en",
+    "question_type": "eligibility",
+    "expected_answerability": "PARTIAL",
+    "candidate_answer": "Eligibility cannot be determined from the supplied profile.",
+    "expected_source_field": "eligibility",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b3",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b20",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b23",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b26",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b27",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b28"
+    ],
+    "candidate_profile": {
+      "marks_percentage": 60,
+      "annual_family_income_inr": 300000
+    },
+    "expected_eligibility_result": "UNKNOWN",
+    "expected_missing_information": [
+      "current_class",
+      "current_school_type",
+      "previous_class",
+      "previous_school_type",
+      "attempt_count",
+      "state"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q08",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "पात्रता जानने के लिए कौन सी जानकारी कम है?",
+    "question_language": "hi",
+    "question_type": "eligibility",
+    "expected_answerability": "PARTIAL",
+    "candidate_answer": "Missing: annual_family_income_inr, current_class, current_school_type, previous_class, previous_school_type, attempt_count, and state.",
+    "expected_source_field": "eligibility",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b3",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b20",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b23",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b26",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b27",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b28"
+    ],
+    "candidate_profile": {
+      "marks_percentage": 60
+    },
+    "expected_eligibility_result": "UNKNOWN",
+    "expected_missing_information": [
+      "annual_family_income_inr",
+      "current_class",
+      "current_school_type",
+      "previous_class",
+      "previous_school_type",
+      "attempt_count",
+      "state"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q09",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "దరఖాస్తు చేయడానికి నేను ఏమి చేయాలి?",
+    "question_language": "te",
+    "question_type": "procedure",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Complete and submit the application online through the SCERT Haryana or BSEH website before 15 October 2025.",
+    "expected_source_field": "actions",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b0",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b1",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b2",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b3"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q10",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "What annual family income limit is stated?",
+    "question_language": "en",
+    "question_type": "retrieval",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Below ₹3,50,000.",
+    "expected_source_field": "eligibility",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b22"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q11",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "What is the interview venue?",
+    "question_language": "en",
+    "question_type": "unanswerable",
+    "expected_answerability": "UNANSWERABLE",
+    "candidate_answer": null,
+    "expected_source_field": null,
+    "expected_evidence_ids": [],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q12",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "ड्रेस कोड क्या है?",
+    "question_language": "hi",
+    "question_type": "unanswerable",
+    "expected_answerability": "UNANSWERABLE",
+    "candidate_answer": null,
+    "expected_source_field": null,
+    "expected_evidence_ids": [],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q13",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "పరీక్ష ఎప్పుడు మరియు ఎక్కడ జరుగుతుంది?",
+    "question_language": "te",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "30 November 2025, 11:00 AM to 2:00 PM, at examination centres across Haryana.",
+    "expected_source_field": "dates.exam_date",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b8",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b9",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b9",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p3:b10"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q14",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "Who is the interview chairperson?",
+    "question_language": "en",
+    "question_type": "unanswerable",
+    "expected_answerability": "UNANSWERABLE",
+    "candidate_answer": null,
+    "expected_source_field": null,
+    "expected_evidence_ids": [],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "hi-q15",
+    "fixture_path": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+    "document_id": "b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2",
+    "notice_language": "hi",
+    "question": "न्यूनतम अंक कितने होने चाहिए?",
+    "question_language": "hi",
+    "question_type": "partial",
+    "expected_answerability": "PARTIAL",
+    "candidate_answer": "The question is ambiguous: 55% concerns prior Class VII marks, while the exam has separate MAT/SAT qualifying marks (36, relaxed to 29 for listed categories).",
+    "expected_source_field": "eligibility",
+    "expected_evidence_ids": [
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b25",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b26",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b27",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p1:b28",
+      "ev:b3fb1ae40c39cb5fdcb1a85d5c1cc324bf1d189017144bdd8c46501a78379be2:p2:b21"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q01",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "What is the application deadline?",
+    "question_language": "en",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "2025-03-21",
+    "expected_source_field": "dates.application_deadline",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b5"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q02",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "आवेदन की अंतिम तिथि क्या है?",
+    "question_language": "hi",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "2025-03-21",
+    "expected_source_field": "dates.application_deadline",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b5"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q03",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "దరఖాస్తు చివరి తేదీ ఏమిటి?",
+    "question_language": "te",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "2025-03-21",
+    "expected_source_field": "dates.application_deadline",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b5"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q04",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "When does application registration open?",
+    "question_language": "en",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "2025-03-07",
+    "expected_source_field": "dates.application_open",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b3"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q05",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "आवेदन का लिंक क्या है?",
+    "question_language": "hi",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Class I: https://kvsonlineadmission.kvs.gov.in; Balvatika-III: https://balvatika.kvs.gov.in/",
+    "expected_source_field": "links",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q06",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "దరఖాస్తు ఎలా చేయాలి?",
+    "question_language": "te",
+    "question_type": "procedure",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Register online and submit before the deadline.",
+    "expected_source_field": "actions",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b7",
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q07",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "What documents are required?",
+    "question_language": "en",
+    "question_type": "unanswerable",
+    "expected_answerability": "UNANSWERABLE",
+    "candidate_answer": null,
+    "expected_source_field": null,
+    "expected_evidence_ids": [],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q08",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "प्रवेश वरीयता किस आधार पर है?",
+    "question_language": "hi",
+    "question_type": "retrieval",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Number of parent transfers in the last 7 years.",
+    "expected_source_field": null,
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q09",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "ఫీజు ఎంత?",
+    "question_language": "te",
+    "question_type": "unanswerable",
+    "expected_answerability": "UNANSWERABLE",
+    "candidate_answer": null,
+    "expected_source_field": "fees",
+    "expected_evidence_ids": [],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q10",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "Where is the examination venue?",
+    "question_language": "en",
+    "question_type": "unanswerable",
+    "expected_answerability": "UNANSWERABLE",
+    "candidate_answer": null,
+    "expected_source_field": null,
+    "expected_evidence_ids": [],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q11",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "ड्रेस कोड क्या है?",
+    "question_language": "hi",
+    "question_type": "unanswerable",
+    "expected_answerability": "UNANSWERABLE",
+    "candidate_answer": null,
+    "expected_source_field": null,
+    "expected_evidence_ids": [],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q12",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "నేను అర్హుడినా?",
+    "question_language": "te",
+    "question_type": "unanswerable",
+    "expected_answerability": "UNANSWERABLE",
+    "candidate_answer": null,
+    "expected_source_field": null,
+    "expected_evidence_ids": [],
+    "candidate_profile": {},
+    "expected_eligibility_result": null,
+    "expected_missing_information": [],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q13",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "What is the notice title?",
+    "question_language": "en",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Kendriya Vidyalaya Sangathan (KVS) Admission Schedule for Class I & Balvatika-III – 2025-2026",
+    "expected_source_field": "metadata.title",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b1",
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b2"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q14",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "आवेदन कब और कहाँ जमा करना है?",
+    "question_language": "hi",
+    "question_type": "structured",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Submit online only by 21 March 2025. Use https://kvsonlineadmission.kvs.gov.in for Class I or https://balvatika.kvs.gov.in/ for Balvatika-III, as applicable.",
+    "expected_source_field": "dates.application_deadline, actions.channel, links",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b5",
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p1:b6",
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  },
+  {
+    "qa_id": "te-q15",
+    "fixture_path": "datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf",
+    "document_id": "06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc",
+    "notice_language": "mixed",
+    "question": "ఆన్‌లైన్ నమోదు లింక్ ఏది?",
+    "question_language": "te",
+    "question_type": "retrieval",
+    "expected_answerability": "ANSWERABLE",
+    "candidate_answer": "Class I: https://kvsonlineadmission.kvs.gov.in; Balvatika-III: https://balvatika.kvs.gov.in/",
+    "expected_source_field": "links",
+    "expected_evidence_ids": [
+      "ev:06a874c63f00198da8aa75b1380029cdd683f0e36e3055d28fad8c4fc0352ffc:p2:b12"
+    ],
+    "verification_state": "NEEDS_HUMAN_VERIFICATION",
+    "annotation_scope": "real_notice"
+  }
+]

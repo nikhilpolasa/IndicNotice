@@ -1,0 +1,36 @@
+Review only eligibility, required documents and application actions in the source.
+Extract every explicit requirement in those three areas, with exact evidence IDs.
+Do not infer requirements, alternatives, action order, or eligibility exceptions.
+All quotations must be short verbatim substrings, not translations or whole pages.
+
+Return a JSON object with these keys:
+category=null, category_evidence_ids=[], metadata={{}}, dates=[], fees=[], benefits=[],
+links=[], required_documents=[...], eligibility=null or a group, actions=[...].
+
+Each required_documents item has canonical_name, source_name, requirement_type
+(mandatory|optional|conditional), alternatives, notes, evidence_ids, applies_when.
+Use concise canonical English identifiers and copy source_name verbatim.
+
+A group has kind="group", group_id, operator (AND|OR), label, children,
+evidence_ids, applies_when. A condition has kind="condition", condition_id,
+attribute, comparator, value, unit, negated, scope, exception_of, reference_date,
+source_text, evidence_ids, applies_when. Preserve nested AND/OR and guards.
+Allowed comparators: >, >=, <, <=, ==, !=, IN, NOT_IN, EXISTS, NOT_EXISTS, BETWEEN.
+BETWEEN is inclusive. Use reference_date only for explicitly stated cutoffs.
+Use normalized attributes such as age, marks_percentage, annual_family_income_inr,
+current_class, previous_class, current_school_type, previous_school_type, category,
+education_level, attempt_count, selection_status. Do not invent unsupported values.
+
+Each action has action_id (A1, A2, ...), action_type, description, depends_on,
+required_document_names, fee_type, deadline_type, channel, url, is_optional,
+evidence_ids, applies_when. Copy description verbatim. Only explicit dependencies
+may go in depends_on. Action types: obtain_document, register, pay_fee,
+upload_document, submit_application, download_admit_card, correction, attend_exam,
+attend_interview, verify_documents, download, other.
+
+Use null or [] for unstated information. Do not leave all three review areas empty
+when the source explicitly states requirements. Every fact requires source support.
+Document: {document_id}; chunk {chunk_number}/{chunk_count}; language {language}.
+<document_chunk>
+{chunk_text}
+</document_chunk>

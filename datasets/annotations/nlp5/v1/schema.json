@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IndicNotice NLP-5 QA review item",
+  "type": "object",
+  "required": ["qa_id", "fixture_path", "document_id", "notice_language", "question", "question_language", "question_type", "expected_answerability", "verification_state"],
+  "properties": {
+    "qa_id": {"type": "string"},
+    "fixture_path": {"type": "string"},
+    "document_id": {"type": "string"},
+    "notice_language": {"enum": ["hi", "te"]},
+    "question": {"type": "string"},
+    "question_language": {"enum": ["en", "hi", "te"]},
+    "question_type": {"enum": ["structured", "retrieval", "eligibility", "procedure", "partial", "unanswerable"]},
+    "expected_answerability": {"enum": ["ANSWERABLE", "PARTIAL", "UNANSWERABLE"]},
+    "candidate_answer": {"type": ["string", "null"]},
+    "expected_source_field": {"type": ["string", "null"]},
+    "expected_evidence_ids": {"type": "array", "items": {"type": "string"}},
+    "candidate_profile": {"type": ["object", "null"]},
+    "expected_eligibility_result": {"type": ["string", "null"]},
+    "expected_missing_information": {"type": "array", "items": {"type": "string"}},
+    "verification_state": {"enum": ["VERIFIED", "NEEDS_HUMAN_VERIFICATION", "UNVERIFIED"]}
+  }
+}

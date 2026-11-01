@@ -1,0 +1,56 @@
+{
+  "run_date": "2026-10-14",
+  "annotation_version": "nlp2-gold-v1",
+  "evaluated_documents": 6,
+  "fields": [
+    {
+      "field": "category",
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_match": 1.0
+    },
+    {
+      "field": "fees",
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_match": 1.0
+    },
+    {
+      "field": "notice_number",
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_match": 1.0
+    }
+  ],
+  "errors": [],
+  "skipped": [
+    {
+      "fixture_path": "datasets/fixtures/nlp1/telugu/ananthapuramu_anganwadi_recruitment_2025.pdf",
+      "reason": "Page 1 has only 0 useful native characters and requires OCR."
+    },
+    {
+      "fixture_path": "datasets/fixtures/nlp2/hindi/kvs_admission_2025_hindi.pdf",
+      "reason": "Page 1 has only 0 useful native characters and requires OCR."
+    },
+    {
+      "fixture_path": "datasets/fixtures/nlp2/hindi/uttarakhand_residential_school_exam_2025_hindi.pdf",
+      "reason": "Page 1 has only 0 useful native characters and requires OCR."
+    },
+    {
+      "fixture_path": "datasets/fixtures/nlp2/telugu/tsemrs_admission_2024_telugu.pdf",
+      "reason": "Page 1 has only 0 useful native characters and requires OCR."
+    }
+  ]
+}

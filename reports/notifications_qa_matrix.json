@@ -1,0 +1,305 @@
+[
+  {
+    "document": "hindi_scert",
+    "language": "en",
+    "kind": "deadline",
+    "question": "What is the application deadline?",
+    "answer": "Application deadline: 2025-10-15",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 1,
+        "text": "ऑनलाइन आवेदन-पत्र भरने की अंतिम तिथि\n\n15 अक्तूबर 2025"
+      }
+    ]
+  },
+  {
+    "document": "hindi_scert",
+    "language": "en",
+    "kind": "documents",
+    "question": "What documents are required?",
+    "answer": "Required documents:\nCaste certificate (जाति प्रमाण-पत्र) · Conditional\nIncome certificate (आय का प्रमाण-पत्र) · Conditional\nDisability certificate (अशक्ििा प्रमाण-पत्र) · Conditional",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 2,
+        "text": "•\nआरिण का लाभ प्राप्ि करने के शलए जाति प्रमाण-पत्र हररयाणा राज्य के सिम अथधकारी से बनवा कर"
+      },
+      {
+        "page": 2,
+        "text": "•\nजाति प्रमाण पत्र अपलोर् नहीं करने की जस्िति में परीिािी को सामान्य वगड में ही शलया जायेगा व बाद में"
+      },
+      {
+        "page": 3,
+        "text": "4. अनुसूथचि जाति/ जनजाति के छात्र अपनी जाति का प्रमाण-पत्र प्रिम श्रेंणी मजजस्रेट या अन्य सिम अथधकारी द्वारा"
+      },
+      {
+        "page": 3,
+        "text": "वपिा की कुि आय का प्रमाण-पत्र SDM/ िहसीलदार से सत्यावपि करा कर अपने जजले के जजला समन्वयक कायाडलय,"
+      },
+      {
+        "page": 3,
+        "text": "5. ददवयांग परीिािी अपना अशक्ििा प्रमाण-पत्र (प्रतिशि सदहि) अपने जजले के CMO से बनवा कर आवेदन के साि स्कैन"
+      }
+    ]
+  },
+  {
+    "document": "hindi_scert",
+    "language": "en",
+    "kind": "unstated",
+    "question": "Is there an interview date?",
+    "answer": "This information is not stated in this notice.",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "hindi_scert",
+    "language": "te",
+    "kind": "deadline",
+    "question": "దరఖాస్తుకు చివరి తేదీ ఏమిటి?",
+    "answer": "దరఖాస్తు గడువు: 2025-10-15",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 1,
+        "text": "ऑनलाइन आवेदन-पत्र भरने की अंतिम तिथि\n\n15 अक्तूबर 2025"
+      }
+    ]
+  },
+  {
+    "document": "hindi_scert",
+    "language": "te",
+    "kind": "documents",
+    "question": "ఏ పత్రాలు సమర్పించాలి?",
+    "answer": "అవసరమైన పత్రాలు:\nకుల ధృవీకరణ పత్రం (जाति प्रमाण-पत्र) · షరతులతో\nఆదాయ ధృవీకరణ పత్రం (आय का प्रमाण-पत्र) · షరతులతో\nవైకల్య ధృవీకరణ పత్రం (अशक्ििा प्रमाण-पत्र) · షరతులతో",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 2,
+        "text": "•\nआरिण का लाभ प्राप्ि करने के शलए जाति प्रमाण-पत्र हररयाणा राज्य के सिम अथधकारी से बनवा कर"
+      },
+      {
+        "page": 2,
+        "text": "•\nजाति प्रमाण पत्र अपलोर् नहीं करने की जस्िति में परीिािी को सामान्य वगड में ही शलया जायेगा व बाद में"
+      },
+      {
+        "page": 3,
+        "text": "4. अनुसूथचि जाति/ जनजाति के छात्र अपनी जाति का प्रमाण-पत्र प्रिम श्रेंणी मजजस्रेट या अन्य सिम अथधकारी द्वारा"
+      },
+      {
+        "page": 3,
+        "text": "वपिा की कुि आय का प्रमाण-पत्र SDM/ िहसीलदार से सत्यावपि करा कर अपने जजले के जजला समन्वयक कायाडलय,"
+      },
+      {
+        "page": 3,
+        "text": "5. ददवयांग परीिािी अपना अशक्ििा प्रमाण-पत्र (प्रतिशि सदहि) अपने जजले के CMO से बनवा कर आवेदन के साि स्कैन"
+      }
+    ]
+  },
+  {
+    "document": "hindi_scert",
+    "language": "te",
+    "kind": "unstated",
+    "question": "ఇంటర్వ్యూ తేదీ ఉందా?",
+    "answer": "ఈ సమాచారం ఈ నోటీసులో పేర్కొనబడలేదు.",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "hindi_scert",
+    "language": "hi",
+    "kind": "deadline",
+    "question": "आवेदन की अंतिम तिथि क्या है?",
+    "answer": "आवेदन की अंतिम तिथि: 2025-10-15",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 1,
+        "text": "ऑनलाइन आवेदन-पत्र भरने की अंतिम तिथि\n\n15 अक्तूबर 2025"
+      }
+    ]
+  },
+  {
+    "document": "hindi_scert",
+    "language": "hi",
+    "kind": "documents",
+    "question": "कौन से दस्तावेज़ आवश्यक हैं?",
+    "answer": "आवश्यक दस्तावेज़:\nजाति प्रमाण पत्र (जाति प्रमाण-पत्र) · सशर्त\nआय प्रमाण पत्र (आय का प्रमाण-पत्र) · सशर्त\nदिव्यांगता प्रमाण पत्र (अशक्ििा प्रमाण-पत्र) · सशर्त",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 2,
+        "text": "•\nआरिण का लाभ प्राप्ि करने के शलए जाति प्रमाण-पत्र हररयाणा राज्य के सिम अथधकारी से बनवा कर"
+      },
+      {
+        "page": 2,
+        "text": "•\nजाति प्रमाण पत्र अपलोर् नहीं करने की जस्िति में परीिािी को सामान्य वगड में ही शलया जायेगा व बाद में"
+      },
+      {
+        "page": 3,
+        "text": "4. अनुसूथचि जाति/ जनजाति के छात्र अपनी जाति का प्रमाण-पत्र प्रिम श्रेंणी मजजस्रेट या अन्य सिम अथधकारी द्वारा"
+      },
+      {
+        "page": 3,
+        "text": "वपिा की कुि आय का प्रमाण-पत्र SDM/ िहसीलदार से सत्यावपि करा कर अपने जजले के जजला समन्वयक कायाडलय,"
+      },
+      {
+        "page": 3,
+        "text": "5. ददवयांग परीिािी अपना अशक्ििा प्रमाण-पत्र (प्रतिशि सदहि) अपने जजले के CMO से बनवा कर आवेदन के साि स्कैन"
+      }
+    ]
+  },
+  {
+    "document": "hindi_scert",
+    "language": "hi",
+    "kind": "unstated",
+    "question": "क्या साक्षात्कार की तारीख दी गई है?",
+    "answer": "यह जानकारी इस सूचना में नहीं दी गई है।",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "en",
+    "kind": "deadline",
+    "question": "What is the application deadline?",
+    "answer": "Application deadline: 2025-03-21",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 1,
+        "text": "• Last Date for Submission of Online Applications: 21st March 2025"
+      }
+    ]
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "en",
+    "kind": "eligibility",
+    "question": "What is the age requirement?",
+    "answer": "This information is not stated in this notice.",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "en",
+    "kind": "unstated",
+    "question": "Is there an application fee?",
+    "answer": "This information is not stated in this notice.",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "te",
+    "kind": "deadline",
+    "question": "దరఖాస్తుకు చివరి తేదీ ఏమిటి?",
+    "answer": "దరఖాస్తు గడువు: 2025-03-21",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 1,
+        "text": "• Last Date for Submission of Online Applications: 21st March 2025"
+      }
+    ]
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "te",
+    "kind": "eligibility",
+    "question": "వయస్సు అర్హత ఏమిటి?",
+    "answer": "ఈ సమాచారం ఈ నోటీసులో పేర్కొనబడలేదు.",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "te",
+    "kind": "unstated",
+    "question": "దరఖాస్తు రుసుము ఉందా?",
+    "answer": "ఈ సమాచారం ఈ నోటీసులో పేర్కొనబడలేదు.",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "hi",
+    "kind": "deadline",
+    "question": "आवेदन की अंतिम तिथि क्या है?",
+    "answer": "आवेदन की अंतिम तिथि: 2025-03-21",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 1,
+        "text": "• Last Date for Submission of Online Applications: 21st March 2025"
+      }
+    ]
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "hi",
+    "kind": "eligibility",
+    "question": "आयु की पात्रता क्या है?",
+    "answer": "यह जानकारी इस सूचना में नहीं दी गई है।",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "hi",
+    "kind": "unstated",
+    "question": "क्या आवेदन शुल्क है?",
+    "answer": "यह जानकारी इस सूचना में नहीं दी गई है।",
+    "answerability": "UNANSWERABLE",
+    "abstained": true,
+    "citations": []
+  },
+  {
+    "document": "hindi_scert",
+    "language": "te",
+    "kind": "cross_lingual",
+    "question": "దరఖాస్తుకు చివరి తేదీ ఏమిటి?",
+    "answer": "దరఖాస్తు గడువు: 2025-10-15",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 1,
+        "text": "ऑनलाइन आवेदन-पत्र भरने की अंतिम तिथि\n\n15 अक्तूबर 2025"
+      }
+    ]
+  },
+  {
+    "document": "telugu_kvs",
+    "language": "hi",
+    "kind": "cross_lingual",
+    "question": "आवेदन की अंतिम तिथि क्या है?",
+    "answer": "आवेदन की अंतिम तिथि: 2025-03-21",
+    "answerability": "ANSWERABLE",
+    "abstained": false,
+    "citations": [
+      {
+        "page": 1,
+        "text": "• Last Date for Submission of Online Applications: 21st March 2025"
+      }
+    ]
+  }
+]

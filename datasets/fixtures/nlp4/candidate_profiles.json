@@ -1,0 +1,73 @@
+{
+  "notice": "Synthetic profiles only; no real personal data. Each expected result is tied to an explicit canonical eligibility scenario.",
+  "scenarios": [
+    {
+      "scenario_ref": "numeric-core",
+      "description": "Age, marks, and annual-family-income requirements combined with AND.",
+      "eligibility": {"group_id":"numeric-core","operator":"AND","children":[
+        {"condition_id":"age-max","attribute":"age","comparator":"<=","value":30,"unit":"years"},
+        {"condition_id":"marks-min","attribute":"marks_percentage","comparator":">=","value":75,"unit":"%"},
+        {"condition_id":"income-max","attribute":"annual_family_income_inr","comparator":"<=","value":300000,"unit":"INR"}
+      ]}
+    },
+    {
+      "scenario_ref": "category-age-relaxation",
+      "description": "General candidates have age 30; SC/ST candidates have age 35.",
+      "eligibility": {"group_id":"age-relaxation","operator":"OR","children":[
+        {"group_id":"general","operator":"AND","applies_when":{"group_id":"general-guard","operator":"AND","children":[{"condition_id":"general-category","attribute":"category","comparator":"NOT_IN","value":["SC","ST"]}]},"children":[{"condition_id":"general-age","attribute":"age","comparator":"<=","value":30,"unit":"years"}]},
+        {"group_id":"reserved","operator":"AND","applies_when":{"group_id":"reserved-guard","operator":"AND","children":[{"condition_id":"reserved-category","attribute":"category","comparator":"IN","value":["SC","ST"]}]},"children":[{"condition_id":"reserved-age","attribute":"age","comparator":"<=","value":35,"unit":"years"}]}
+      ]}
+    },
+    {
+      "scenario_ref": "pwd-age-exemption",
+      "description": "The age rule does not apply to PwD candidates.",
+      "eligibility": {"group_id":"pwd-exemption","operator":"AND","children":[
+        {"condition_id":"non-pwd-age","attribute":"age","comparator":"<=","value":30,"unit":"years","applies_when":{"group_id":"non-pwd","operator":"AND","children":[{"condition_id":"not-pwd","attribute":"disability_status","comparator":"!=","value":"PwD"}]}}
+      ]}
+    },
+    {
+      "scenario_ref": "degree-alternative",
+      "description": "Either B.Tech or B.E. satisfies the degree requirement.",
+      "eligibility": {"group_id":"degree","operator":"OR","children":[
+        {"condition_id":"btech","attribute":"education_level","comparator":"==","value":"B.Tech"},
+        {"condition_id":"be","attribute":"education_level","comparator":"==","value":"B.E."}
+      ]}
+    },
+    {
+      "scenario_ref": "cutoff-age",
+      "description": "Age is computed from date of birth at the stated cutoff date.",
+      "eligibility": {"group_id":"cutoff-age","operator":"AND","children":[
+        {"condition_id":"cutoff-age-max","attribute":"age","comparator":"<=","value":30,"unit":"years","reference_date":"2026-07-01"}
+      ]}
+    },
+    {
+      "scenario_ref": "income-boundary",
+      "description": "Annual family income is at most INR 250000.",
+      "eligibility": {"group_id":"income-boundary","operator":"AND","children":[
+        {"condition_id":"income-250k","attribute":"annual_family_income_inr","comparator":"<=","value":250000,"unit":"INR"}
+      ]}
+    },
+    {
+      "scenario_ref": "marks-boundary",
+      "description": "Marks percentage is at least 75.",
+      "eligibility": {"group_id":"marks-boundary","operator":"AND","children":[
+        {"condition_id":"marks-75","attribute":"marks_percentage","comparator":">=","value":75,"unit":"%"}
+      ]}
+    }
+  ],
+  "profiles": [
+    {"id":"clear-pass","scenario_ref":"numeric-core","profile":{"age":24,"marks_percentage":80,"annual_family_income_inr":200000,"category":"GENERAL"},"expected":"PASS"},
+    {"id":"clear-fail","scenario_ref":"numeric-core","profile":{"age":31,"marks_percentage":70,"annual_family_income_inr":400000,"category":"GENERAL"},"expected":"FAIL"},
+    {"id":"income-missing","scenario_ref":"numeric-core","profile":{"age":24,"marks_percentage":80},"expected":"UNKNOWN"},
+    {"id":"sc-relaxation","scenario_ref":"category-age-relaxation","profile":{"age":33,"category":"SC"},"expected":"PASS"},
+    {"id":"general-no-relaxation","scenario_ref":"category-age-relaxation","profile":{"age":33,"category":"GENERAL"},"expected":"FAIL"},
+    {"id":"category-missing","scenario_ref":"category-age-relaxation","profile":{"age":33},"expected":"UNKNOWN"},
+    {"id":"pwd-exemption","scenario_ref":"pwd-age-exemption","profile":{"age":40,"disability_status":"PwD"},"expected":"NOT_APPLICABLE"},
+    {"id":"multiple-degrees","scenario_ref":"degree-alternative","profile":{"education_level":["B.Sc","B.E."]},"expected":"PASS"},
+    {"id":"age-boundary","scenario_ref":"cutoff-age","profile":{"date_of_birth":"1996-07-01"},"expected":"PASS"},
+    {"id":"income-boundary","scenario_ref":"income-boundary","profile":{"annual_family_income_inr":250000},"expected":"PASS"},
+    {"id":"marks-below","scenario_ref":"marks-boundary","profile":{"marks_percentage":74.99},"expected":"FAIL"},
+    {"id":"marks-exact","scenario_ref":"marks-boundary","profile":{"marks_percentage":75},"expected":"PASS"},
+    {"id":"marks-above","scenario_ref":"marks-boundary","profile":{"marks_percentage":75.01},"expected":"PASS"}
+  ]
+}

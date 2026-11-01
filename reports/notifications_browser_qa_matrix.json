@@ -1,0 +1,101 @@
+{
+  "browser": "Chrome headless CDP",
+  "checks": 6,
+  "records": [
+    {
+      "document": "hindi_scert",
+      "language": "en",
+      "kind": "deadline",
+      "question": "What is the application deadline?",
+      "answer": "Application deadline: 2025-10-15",
+      "answerability": "ANSWERABLE",
+      "abstained": false,
+      "citation_pages": [
+        1
+      ],
+      "browser_citation_pages": [
+        1
+      ]
+    },
+    {
+      "document": "hindi_scert",
+      "language": "te",
+      "kind": "deadline",
+      "question": "దరఖాస్తుకు చివరి తేదీ ఏమిటి?",
+      "answer": "దరఖాస్తు గడువు: 2025-10-15",
+      "answerability": "ANSWERABLE",
+      "abstained": false,
+      "citation_pages": [
+        1
+      ],
+      "browser_citation_pages": [
+        1
+      ]
+    },
+    {
+      "document": "hindi_scert",
+      "language": "hi",
+      "kind": "deadline",
+      "question": "आवेदन की अंतिम तिथि क्या है?",
+      "answer": "आवेदन की अंतिम तिथि: 2025-10-15",
+      "answerability": "ANSWERABLE",
+      "abstained": false,
+      "citation_pages": [
+        1
+      ],
+      "browser_citation_pages": [
+        1
+      ]
+    },
+    {
+      "document": "telugu_kvs",
+      "language": "en",
+      "kind": "deadline",
+      "question": "What is the application deadline?",
+      "answer": "Application deadline: 2025-03-21",
+      "answerability": "ANSWERABLE",
+      "abstained": false,
+      "citation_pages": [
+        1
+      ],
+      "browser_citation_pages": [
+        1
+      ]
+    },
+    {
+      "document": "telugu_kvs",
+      "language": "te",
+      "kind": "deadline",
+      "question": "దరఖాస్తుకు చివరి తేదీ ఏమిటి?",
+      "answer": "దరఖాస్తు గడువు: 2025-03-21",
+      "answerability": "ANSWERABLE",
+      "abstained": false,
+      "citation_pages": [
+        1
+      ],
+      "browser_citation_pages": [
+        1
+      ]
+    },
+    {
+      "document": "telugu_kvs",
+      "language": "hi",
+      "kind": "deadline",
+      "question": "आवेदन की अंतिम तिथि क्या है?",
+      "answer": "आवेदन की अंतिम तिथि: 2025-03-21",
+      "answerability": "ANSWERABLE",
+      "abstained": false,
+      "citation_pages": [
+        1
+      ],
+      "browser_citation_pages": [
+        1
+      ]
+    }
+  ],
+  "screenshots": [
+    "reports/notifications-ask-en.png",
+    "reports/notifications-ask-te.png",
+    "reports/notifications-ask-hi.png"
+  ]
+}

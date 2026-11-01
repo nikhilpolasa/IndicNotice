@@ -1,0 +1,54 @@
+Extract all facts explicitly supported by this chunk into the exact JSON shape below.
+
+Top-level keys (all required): category, category_evidence_ids, metadata, dates, fees,
+benefits, required_documents, eligibility, actions, links.
+
+metadata keys: title, title_evidence_ids, issuing_authority,
+issuing_authority_evidence_ids, notice_number, notice_number_evidence_ids,
+academic_year, academic_year_evidence_ids.
+
+date keys: date_type, value (YYYY-MM-DD or null), end_value, time, timezone,
+source_text, precision, is_tentative, mandatory, evidence_ids. Allowed date_type values:
+publication_date, application_open, application_deadline, fee_payment_deadline,
+correction_start_date, correction_deadline, admit_card_date, exam_date,
+interview_date, document_verification_date, counseling_date,
+eligibility_cutoff_date, result_date, other. If a numeric date is ambiguous, set value
+to null and precision to uncertain. Allowed precision values: date_only, datetime,
+month_only, year_only, uncertain.
+
+fee keys: fee_type, amount_inr, source_text, applies_to_category, waived_for,
+payment_mode, is_refundable, evidence_ids.
+benefit keys: benefit_type, amount_inr, description, source_text, applies_to,
+frequency, evidence_ids.
+required document keys: canonical_name, source_name, requirement_type
+(mandatory|optional|conditional), alternatives, notes, evidence_ids, applies_when.
+
+Eligibility is null or a recursive group. A group has kind="group", group_id,
+operator (AND|OR), label, children, evidence_ids, applies_when. A leaf has
+kind="condition", condition_id, attribute, comparator, value, unit, negated,
+scope, exception_of, reference_date, source_text, evidence_ids, applies_when.
+Allowed comparators: >, >=, <, <=, ==, !=, IN, NOT_IN, EXISTS, NOT_EXISTS,
+BETWEEN. BETWEEN uses a two-element inclusive list. Model a relaxation as a
+guarded condition/group, not as free text. Use the explicitly stated eligibility
+cutoff date as reference_date where applicable.
+
+action keys: action_id, action_type, description, depends_on (local action IDs),
+required_document_names (canonical names), fee_type, deadline_type, channel,
+url, is_optional, evidence_ids, applies_when. Allowed action_type values:
+obtain_document, register, pay_fee, upload_document, submit_application,
+download_admit_card, correction, attend_exam, attend_interview,
+verify_documents, download, other.
+
+Use action IDs A1, A2, ... only. Evidence IDs begin with E and must never be used
+as action IDs or depends_on values. Every depends_on value must name another action
+that you emitted in the same JSON object.
+
+link keys: url, link_type, description, evidence_ids. URLs must be absolute HTTP(S).
+
+Document ID: {document_id}
+Chunk: {chunk_number}/{chunk_count}
+Language hint: {language}
+
+<document_chunk>
+{chunk_text}
+</document_chunk>

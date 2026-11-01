@@ -1,0 +1,23 @@
+{
+  "fixture": "datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf",
+  "isolated_accounts": 20,
+  "notification_fanout": {
+    "users": 20,
+    "created": 20,
+    "seconds": 0.245293,
+    "includes_publish_and_match": true
+  },
+  "notifications_page_read": {
+    "iterations": 100,
+    "total_seconds": 0.203146,
+    "mean_seconds": 0.002031,
+    "p95_seconds": 0.002288
+  },
+  "deadline_reminder_generation": {
+    "users": 20,
+    "created": 20,
+    "seconds": 0.374213,
+    "controlled_deadline": "2026-11-04"
+  },
+  "data_policy": "Temporary SQLite database; real SCERT analysis. Future deadline override is isolated test data only."
+}

@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[project]
+name = "indicnotice"
+version = "0.1.0"
+description = "IndicNotice — NLP engine for Telugu/Hindi public notice understanding"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = [
+    "pydantic>=2.7,<3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0",
+    "pytest-cov>=7.0",
+]
+api = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "httpx>=0.28",
+]
+nlp1 = [
+    "PyMuPDF==1.28.2",
+    "Pillow==12.3.0",
+]
+demo = [
+    "streamlit>=1.40,<2.0",
+]
+auth = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "httpx>=0.28",
+    "websockets>=13",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["indicnotice*", "services*"]
+
+[tool.setuptools.package-data]
+"services.auth" = ["migrations/*.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+markers = [
+    "integration: exercises installed native tools or real document fixtures",
+]
+
+[tool.coverage.run]
+source = ["indicnotice", "services"]
+omit = ["tests/*"]

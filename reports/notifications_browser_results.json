@@ -1,0 +1,32 @@
+{
+  "browser": "Chrome headless CDP",
+  "checks": [
+    "Admin authenticated in live app; desktop welcome rendered",
+    "Three independent student accounts saved qualifying, failing and incomplete profiles; incomplete account opted in through the real notification preferences UI",
+    "Admin uploaded the checked-in Hindi SCERT PDF, reviewed extracted eligibility and published through the real browser UI",
+    "Student 1 notifications matched profile and preference; no other account data exposed",
+    "Student 2 notifications matched profile and preference; no other account data exposed",
+    "Student 3 notifications matched profile and preference; no other account data exposed",
+    "Mark-as-read persisted to SQLite; event is idempotent on app rerun",
+    "Notifications page rendered in Telugu and Hindi with translated UI copy",
+    "Hindi notification link opened the corresponding published notice details",
+    "Mobile notification page captured; horizontal overflow=False",
+    "Student publication API call denied by persisted admin authorization",
+    "Separate browser context has no authenticated session or notice content",
+    "Unpublishing hides notification rows and their notice links from students"
+  ],
+  "screenshots": [
+    "reports/notifications-welcome-desktop.png",
+    "reports/notifications-english-unread.png",
+    "reports/notifications-telugu.png",
+    "reports/notifications-hindi.png",
+    "reports/notifications-mobile.png"
+  ],
+  "notification_counts": [
+    0,
+    0,
+    0
+  ],
+  "notice_title": "Ph.No. 0124-4066243 राष्ट्रीय साधन सह योग्यता छात्रवृतत योजना (NMMSS) परीक्षा 2025-26 (कक्षा आठवी में अध्ययनरत ववद्यार्थियों के लिए)",
+  "unpublished": true
+}

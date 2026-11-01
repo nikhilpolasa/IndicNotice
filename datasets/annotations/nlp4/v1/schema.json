@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IndicNotice NLP-4 semantic review example",
+  "type": "object",
+  "required": ["example_id", "document_id", "language", "verification_state", "source_evidence", "candidate"],
+  "properties": {
+    "example_id": {"type": "string"},
+    "document_id": {"type": "string"},
+    "language": {"enum": ["hi", "te"]},
+    "verification_state": {"enum": ["NEEDS_HUMAN_VERIFICATION", "VERIFIED", "REJECTED"]},
+    "source_evidence": {
+      "type": "object",
+      "required": ["evidence_id", "text"],
+      "properties": {"evidence_id": {"type": "string"}, "text": {"type": "string"}}
+    },
+    "candidate": {
+      "type": "object",
+      "properties": {
+        "atomic_conditions": {"type": "array"},
+        "groups": {"type": "array"},
+        "guards": {"type": "array"},
+        "actions": {"type": "array"},
+        "edges": {"type": "array"}
+      }
+    }
+  }
+}
