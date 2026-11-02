@@ -27,7 +27,7 @@ LOG = logging.getLogger(__name__)
 FAST_MODE = "initial-rules"
 ADVANCED_MODE = "verified-contextual"
 MAX_UPLOAD_BYTES = 50 * 1024 * 1024
-INITIAL_ANALYSIS_CONFIG = "initial-rules-v1;native-pdf+optional-tesseract-ocr"
+INITIAL_ANALYSIS_CONFIG = "initial-rules-v2;native-pdf+optional-tesseract-ocr"
 
 
 def analysis_cache_key(data: bytes) -> str:
@@ -59,7 +59,8 @@ def initial_analysis(data: bytes, filename: str) -> DemoAnalysis:
         ingestion = DocumentIngestor(ocr_backend=ocr).ingest(path)
     baseline = RegexBaselineExtractor().extract_ingestion(ingestion).analysis
     semantic = EvidenceGatedSemanticExtractor().combine(baseline, ingestion.evidence, None)
-    return DemoAnalysis(FAST_MODE, ingestion, semantic.analysis, baseline,
+    from demo.presentation import resolve_metadata
+    return DemoAnalysis(FAST_MODE, ingestion, resolve_metadata(semantic.analysis), baseline,
                         hybrid_diagnostics=semantic.diagnostics)
 
 
@@ -82,7 +83,7 @@ def clear_notice(state: MutableMapping[str, Any]) -> None:
     if job := state.get("advanced_job"):
         job.cancel()
     for key in list(state):
-        if key in {"upload_digest", "analysis_cache_key", "demo_result", "candidate_profile", "qa_response", "qa_input", "eligibility_response", "advanced_job", "advanced_error"} or key.startswith(("provide-", "value-", "eligibility-widget-")):
+        if key in {"upload_digest", "analysis_cache_key", "demo_result", "candidate_profile", "qa_response", "qa_input", "eligibility_response", "advanced_job", "advanced_error", "notice_detail_selected", "notice-detail-page"} or key.startswith(("provide-", "value-", "eligibility-widget-")):
             del state[key]
 
 

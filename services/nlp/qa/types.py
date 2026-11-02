@@ -26,6 +26,10 @@ class Answerability(str, Enum):
 
 class QuestionIntent(str, Enum):
     TITLE = "TITLE"
+    APPLICATION_MODE = "APPLICATION_MODE"
+    PROGRAMME_SCOPE = "PROGRAMME_SCOPE"
+    CATEGORY = "CATEGORY"
+    PREFERENCE = "PREFERENCE"
     DEADLINE = "DEADLINE"
     DATE = "DATE"
     FEE = "FEE"
