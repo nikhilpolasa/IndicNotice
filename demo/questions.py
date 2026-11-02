@@ -75,6 +75,10 @@ def answer_notice(question, result, profile=None, *, language=None):
                 ", ".join(d.value or d.source_text or tr("missing", lang) for d in deadlines)
                 if deadlines else tr("missing", lang)))
         response.answer_text = "\n".join(lines) if lines else tr("source_answer", lang) + "\n" + "\n".join(c.text for c in response.citations)
+    elif field == "eligibility" and a.eligibility is None:
+        # Keep the explicit, source-grounded explanation that the notice refers
+        # applicants to a separate guideline; there is no local rule set to score.
+        return response
     elif field == "eligibility":
         state = eligibility_display_state(response.eligibility_result, result, dict(profile or {}))
         response.eligibility_result = state
@@ -84,6 +88,11 @@ def answer_notice(question, result, profile=None, *, language=None):
             response.answer_text += "\n" + tr("partial", lang)
         if response.missing_information:
             response.answer_text += "\n" + ", ".join(tr(k, lang) for k in response.missing_information)
+    elif field in {"application.mode", "admission.programme_scope", "admission.categories", "admission.preference"}:
+        # These deterministic answers are already localized and supported by
+        # the citations selected for the exact fact. Do not replace them with
+        # unrelated nearby excerpts.
+        return response
     else:
         # Free text remains a quotation. Do not pretend a passage is a translated,
         # fully supported answer to an arbitrary question.

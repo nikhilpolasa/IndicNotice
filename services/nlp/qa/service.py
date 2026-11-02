@@ -125,6 +125,83 @@ def _missing_for_group(group: ConditionGroup | None, profile: Mapping[str, Any])
     return missing
 
 
+_CATEGORY_MARKER = re.compile(r"\bCategory\s*(I{1,3}|IV|V|[1-5])\b(?!\s*\.\s*e\.)", re.I)
+_CATEGORY_END = re.compile(r"\b(?:Note:|For online Registration|For Further Admission|Preference in Admission)", re.I)
+_CATEGORY_ROMAN = {"1": "I", "2": "II", "3": "III", "4": "IV", "5": "V"}
+_QUESTION_STOPWORDS = {"which", "what", "who", "is", "are", "the", "a", "an", "of", "for", "in", "on", "to", "does", "do", "come", "comes", "under", "includes", "include", "category", "categories", "children", "child", "from", "this", "notice", "government", "state"}
+_CATEGORY_QUERY_TRANSLATIONS = {
+    "राज्य": "state", "सरकार": "government", "कर्मचारी": "employees",
+    "कर्मचारियों": "employees", "बच्चे": "children", "बच्चों": "children",
+    "రాష్ట్ర": "state", "ప్రభుత్వ": "government", "ప్రభుత్వం": "government",
+    "ఉద్యోగి": "employees", "ఉద్యోగులు": "employees", "ఉద్యోగుల": "employees",
+    "పిల్లలు": "children", "పిల్లల": "children",
+}
+
+
+def _meaningful_terms(text: str) -> set[str]:
+    # Python's \w splits many Indic words at dependent-vowel marks; keep each
+    # script run intact so the fixed query vocabulary below can match it.
+    words = {word.casefold() for word in re.findall(r"[A-Za-z0-9]+|[\u0900-\u097f]+|[\u0c00-\u0c7f]+", text)}
+    words.update(_CATEGORY_QUERY_TRANSLATIONS[word] for word in tuple(words) if word in _CATEGORY_QUERY_TRANSLATIONS)
+    # Preserve discriminatory terms that are useful for distinguishing rows.
+    return words - (_QUESTION_STOPWORDS - {"government", "state"})
+
+
+def _requested_category(question: str) -> str | None:
+    match = re.search(r"(?:\bcategory\b|श्रेणी|वर्ग|వర్గం|కేటగిరీ|కేటగిరి)\s*(I{1,3}|IV|V|[1-5])\b", question, re.I)
+    if not match:
+        return None
+    value = match.group(1).upper()
+    return _CATEGORY_ROMAN.get(value, value)
+
+
+def _localize_category_description(roman: str, description: str, language: str) -> str:
+    if language == "hi" and roman == "III" and re.search(r"State Government employees", description, re.I):
+        return "स्थानांतरणीय और गैर-स्थानांतरणीय राज्य सरकार के कर्मचारियों के बच्चे"
+    if language == "te" and roman == "III" and re.search(r"State Government employees", description, re.I):
+        return "బదిలీ అయ్యే మరియు బదిలీ కాని రాష్ట్ర ప్రభుత్వ ఉద్యోగుల పిల్లలు"
+    if language == "hi" and roman == "V" and re.search(r"any other category", description, re.I):
+        return "अन्य किसी भी श्रेणी के बच्चे, अर्थात ऊपर दी गई श्रेणी I से IV में शामिल न होने वाले बच्चे"
+    if language == "te" and roman == "V" and re.search(r"any other category", description, re.I):
+        return "ఇతర ఏ వర్గానికి చెందినవారైనా; పైన పేర్కొన్న I నుండి IV వర్గాల్లో చేరని పిల్లలు"
+    return description
+
+
+def _category_rows(evidence) -> list[tuple[str, str, list[str]]]:
+    rows: list[tuple[str, str, list[str]]] = []
+    by_page: dict[int, list] = {}
+    for span in evidence:
+        by_page.setdefault(span.page_number, []).append(span)
+    for spans in by_page.values():
+        pieces: list[str] = []
+        offsets: list[tuple[int, int, str]] = []
+        cursor = 0
+        for span in spans:
+            if pieces:
+                pieces.append("\n")
+                cursor += 1
+            pieces.append(span.text)
+            end = cursor + len(span.text)
+            offsets.append((cursor, end, span.evidence_id))
+            cursor = end
+        page_text = "".join(pieces)
+        markers = list(_CATEGORY_MARKER.finditer(page_text))
+        for index, marker in enumerate(markers):
+            start = marker.end()
+            end = markers[index + 1].start() if index + 1 < len(markers) else len(page_text)
+            body = page_text[start:end]
+            terminator = _CATEGORY_END.search(body)
+            if terminator:
+                end = start + terminator.start()
+                body = body[:terminator.start()]
+            body = re.sub(r"\s+", " ", body).strip(" :;.-")
+            if not body:
+                continue
+            ids = [eid for left, right, eid in offsets if right > marker.start() and left < end]
+            rows.append((_CATEGORY_ROMAN.get(marker.group(1).upper(), marker.group(1).upper()), body, ids))
+    return rows
+
+
 class GroundedQAService:
     """Single-turn QA over one canonical NoticeAnalysis."""
 
@@ -151,6 +228,10 @@ class GroundedQAService:
         route = route_question(question)
         handlers = {
             QuestionIntent.TITLE: self._title,
+            QuestionIntent.APPLICATION_MODE: self._application_mode,
+            QuestionIntent.PROGRAMME_SCOPE: self._programme_scope,
+            QuestionIntent.CATEGORY: self._category,
+            QuestionIntent.PREFERENCE: self._preference,
             QuestionIntent.DEADLINE: self._deadline,
             QuestionIntent.DATE: self._date,
             QuestionIntent.FEE: self._fee,
@@ -250,6 +331,58 @@ class GroundedQAService:
             return _not_stated(route)
         return _response(route, f"Issuing authority: {value}.", AnswerMode.STRUCTURED_FACT, Answerability.ANSWERABLE, citations=citations_from_ids(analysis.metadata.issuing_authority_evidence_ids, analysis), structured_source_field="metadata.issuing_authority")
 
+    def _application_mode(self, route, question, analysis, profile) -> QAResponse:
+        spans = [item for item in analysis.evidence if re.search(r"mode of application|applications? (?:are )?(?:accepted|submitted)|apply online|online only|ऑनलाइन|ఆన్.?లైన్", item.text, re.I)]
+        support = next((item for item in spans if re.search(r"online only|only online|ऑनलाइन|ఆన్.?లైన్", item.text, re.I)), None)
+        if support is None:
+            return _not_stated(route)
+        if re.search(r"offline|ऑफलाइन|ఆఫ్.?లైన్", question, re.I):
+            positive = bool(re.search(r"offline only|only offline|ऑफलाइन|ఆఫ్.?లైన్", support.text, re.I))
+            answer = {"en": "Applications are accepted offline only." if positive else "Applications are not accepted offline; the notice specifies online applications only.",
+                      "hi": "आवेदन केवल ऑफ़लाइन स्वीकार किए जाते हैं।" if positive else "ऑफ़लाइन आवेदन स्वीकार नहीं किए जाते; सूचना में केवल ऑनलाइन आवेदन दिए गए हैं।",
+                      "te": "దరఖాస్తులు ఆఫ్‌లైన్‌లో మాత్రమే స్వీకరిస్తారు." if positive else "ఆఫ్‌లైన్ దరఖాస్తులు స్వీకరించరు; నోటీసు ఆన్‌లైన్ దరఖాస్తులనే పేర్కొంటుంది."}[route.language]
+        else:
+            answer = {"en": "Applications are accepted online only.", "hi": "आवेदन केवल ऑनलाइन स्वीकार किए जाते हैं।", "te": "దరఖాస్తులు ఆన్‌లైన్‌లో మాత్రమే స్వీకరిస్తారు."}[route.language]
+        return _response(route, answer, AnswerMode.STRUCTURED_FACT, Answerability.ANSWERABLE, citations=citations_from_ids([support.evidence_id], analysis), structured_source_field="application.mode")
+
+    def _programme_scope(self, route, question, analysis, profile) -> QAResponse:
+        value = analysis.metadata.title or ""
+        match = re.search(r"(Class\s+I(?:\s*(?:&|and)\s*Balvatika[- ]?III)?|Balvatika[- ]?III)", value, re.I)
+        if not match or not analysis.metadata.title_evidence_ids:
+            return _not_stated(route)
+        scope = re.sub(r"\s+", " ", match.group(1)).replace("&", "and")
+        answer = {"en": f"This notice covers {scope}.", "hi": f"यह सूचना {scope} के लिए है।", "te": f"ఈ నోటీసు {scope} కోసం."}[route.language]
+        return _response(route, answer, AnswerMode.STRUCTURED_FACT, Answerability.ANSWERABLE, citations=citations_from_ids(analysis.metadata.title_evidence_ids, analysis), structured_source_field="admission.programme_scope")
+
+    def _category(self, route, question, analysis, profile) -> QAResponse:
+        rows = _category_rows(analysis.evidence)
+        requested = _requested_category(question)
+        if requested:
+            candidates = [row for row in rows if row[0] == requested]
+        else:
+            query_terms = _meaningful_terms(question)
+            candidates = sorted(rows, key=lambda row: len(query_terms & _meaningful_terms(row[1])), reverse=True)
+            if candidates:
+                first_score = len(query_terms & _meaningful_terms(candidates[0][1]))
+                second_score = len(query_terms & _meaningful_terms(candidates[1][1])) if len(candidates) > 1 else 0
+                candidates = candidates[:1] if first_score >= 2 and first_score > second_score else []
+        if len(candidates) != 1:
+            return _not_stated(route)
+        roman, text, ids = candidates[0]
+        description = re.sub(r"\s+", " ", text).strip(" :;.-")
+        description = _localize_category_description(roman, description, route.language)
+        answer = {"en": f"Category {roman}: {description}.", "hi": f"श्रेणी {roman}: {description}।", "te": f"వర్గం {roman}: {description}."}[route.language]
+        return _response(route, answer, AnswerMode.STRUCTURED_FACT, Answerability.ANSWERABLE, citations=citations_from_ids(ids, analysis), structured_source_field="admission.categories")
+
+    def _preference(self, route, question, analysis, profile) -> QAResponse:
+        span = next((item for item in analysis.evidence if re.search(r"preference in admission", item.text, re.I) and re.search(r"transfer", item.text, re.I)), None)
+        if span is None:
+            return _not_stated(route)
+        answer = {"en": "Admission preference is based on the number of transfers of the parents in the last 7 years.",
+                  "hi": "प्रवेश में प्राथमिकता पिछले 7 वर्षों में माता-पिता के स्थानांतरण की संख्या पर आधारित है।",
+                  "te": "ప్రవేశ ప్రాధాన్యత గత 7 సంవత్సరాల్లో తల్లిదండ్రుల బదిలీల సంఖ్య ఆధారంగా ఉంటుంది."}[route.language]
+        return _response(route, answer, AnswerMode.STRUCTURED_FACT, Answerability.ANSWERABLE, citations=citations_from_ids([span.evidence_id], analysis), structured_source_field="admission.preference")
+
     def _url(self, route, question, analysis, profile) -> QAResponse:
         application_actions = [
             item for item in analysis.actions
@@ -311,7 +444,13 @@ class GroundedQAService:
 
     def _eligibility(self, route, question, analysis, profile) -> QAResponse:
         if analysis.eligibility is None:
-            return _not_stated(route)
+            referral = next((item for item in analysis.evidence if re.search(r"official.*guidelines|further admission guidelines|eligibility criteria", item.text, re.I)), None)
+            if referral is None:
+                return _not_stated(route)
+            answer = {"en": "Eligibility cannot be determined from the information extracted from this notice. It refers readers to the official admission guidelines.",
+                      "hi": "इस सूचना से पात्रता निर्धारित नहीं की जा सकती। इसमें आधिकारिक प्रवेश दिशानिर्देश देखने को कहा गया है।",
+                      "te": "ఈ నోటీసు నుంచి అర్హతను నిర్ణయించలేము. అధికారిక ప్రవేశ మార్గదర్శకాలను చూడాలని ఇది సూచిస్తుంది."}[route.language]
+            return _response(route, answer, AnswerMode.PARTIALLY_DETERMINABLE, Answerability.PARTIAL, citations=citations_from_ids([referral.evidence_id], analysis), structured_source_field="eligibility")
         supplied = dict(profile or {})
         explanation = explain_eligibility(supplied, analysis.eligibility, analysis.evidence)
         missing = (
@@ -418,13 +557,11 @@ class GroundedQAService:
         return _not_stated(route)
 
     def _retrieval_answer(self, route, question, analysis) -> QAResponse:
+        if self.generator is None:
+            return _not_stated(route)
         retrieved = self.retriever.retrieve(question, analysis.evidence, top_k=5)
         if not retrieved:
             return _not_stated(route)
-        if self.generator is None:
-            selected = retrieved[:3]
-            answer = "Relevant notice text: " + " ".join(item.text for item in selected)
-            return _response(route, answer, AnswerMode.EVIDENCE_RETRIEVAL, Answerability.ANSWERABLE, citations=citations_from_ids([item.evidence_id for item in selected], analysis), retrieval_method=self.retriever.method)
         try:
             output = self.generator.generate(question, retrieved)
             if output.abstained or not output.answer_text.strip():

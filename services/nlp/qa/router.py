@@ -9,12 +9,16 @@ from services.nlp.qa.types import QuestionIntent, QuestionRoute
 
 
 _RULES: tuple[tuple[QuestionIntent, re.Pattern[str]], ...] = (
+    (QuestionIntent.APPLICATION_MODE, re.compile(r"online|offline|mode of application|how (?:is|are) (?:the )?applications? (?:submitted|accepted)|आवेदन.*(?:ऑनलाइन|ऑफलाइन|कैसे होगा)|ऑनलाइन.*आवेदन|దరఖాస్తు.*(?:ఆన్‌లైన్|ఆఫ్లైన్|ఆఫ్‌లైన్)|ఆన్‌లైన్.*దరఖాస్తు", re.I)),
+    (QuestionIntent.PROGRAMME_SCOPE, re.compile(r"which classes|classes? (?:are )?covered|class(?:es)? covered|grades? covered|ఏ తరగతులు|తరగతులు.*(?:చేర్చారు|ఉన్నాయి)|कौन सी कक्षाएँ|कक्षाएँ.*(?:शामिल|हैं)", re.I)),
+    (QuestionIntent.CATEGORY, re.compile(r"\bcategory\b|\bcategories\b|which group|which class.*category|श्रेणी|वर्ग|किस श्रेणी|कौन सी श्रेणी|వర్గం|ఏ వర్గం|వర్గంలో|కేటగిరీ|కేటగిరి", re.I)),
+    (QuestionIntent.PREFERENCE, re.compile(r"preference|priority|selection.*(?:based|determined)|what determines.*(?:admission|selection)|चयन.*(?:आधार|निर्धारित)|प्राथमिकता|वरीयता|ఎంపిక.*(?:ఆధారం|నిర్ణయ)|ప్రాధాన్యత", re.I)),
     (QuestionIntent.TITLE, re.compile(r"notice title|title of (?:the )?notice|सूचना.*शीर्षक|नोटिस.*शीर्षक|शीर्षक.*(?:सूचना|नोटिस)|నోటీసు.*శీర్షిక|శీర్షిక.*నోటీసు", re.I)),
-    (QuestionIntent.ELIGIBILITY, re.compile(r"\beligib|can i apply|why am i not|information is missing|पात्र|योग्य|क्या मैं आवेदन|कौन सी जानकारी.*(?:चाहिए|कम)|అర్హ|దరఖాస్తు చేసుకోవచ్చా|ఏ సమాచారం.*అవసరం", re.I)),
+    (QuestionIntent.ELIGIBILITY, re.compile(r"\beligib|can i apply|why am i not|information is missing|\bmarks?\b.*(?:enough|eligible|apply|qualif)|(?:enough|eligible|apply|qualif).*\bmarks?\b|पात्र|योग्य|क्या मैं आवेदन|कौन सी जानकारी.*(?:चाहिए|कम)|अंक.*(?:पर्याप्त|पात्र)|అర్హ|దరఖాస్తు చేసుకోవచ్చా|ఏ సమాచారం.*అవసరం|మార్కులు.*(?:సరిపోతాయా|అర్హ)", re.I)),
     (QuestionIntent.DEADLINE, re.compile(r"last date|application deadline|closing date|अंतिम तिथि|आवेदन.*(?:अंतिम|तक)|చివరి తేదీ|దరఖాస్తు.*గడువు", re.I)),
     (QuestionIntent.FEE, re.compile(r"\bfees?\b|application charge|शुल्क|फीस|రుసుము|ఫీజు", re.I)),
     (QuestionIntent.DOCUMENTS, re.compile(r"documents?|certificates?|दस्तावेज|प्रमाण.?पत्र|कागजात|పత్రాలు|ధృవీకరణ పత్రాలు|సర్టిఫికెట్లు", re.I)),
-    (QuestionIntent.AUTHORITY, re.compile(r"who issued|issuing authority|issued by|किसने जारी|जारीकर्ता|कौन सा विभाग|ఎవరు జారీ|జారీ చేసిన సంస్థ", re.I)),
+    (QuestionIntent.AUTHORITY, re.compile(r"who issued|which organization issued|which organisation issued|issuing authority|issued by|किसने जारी|जारीकर्ता|कौन सा विभाग|ఎవరు జారీ|జారీ చేసిన సంస్థ|ఏ సంస్థ.*జారీ", re.I)),
     (QuestionIntent.URL, re.compile(r"application (?:link|url|portal)|where.*apply|website|वेबसाइट|लिंक|कहाँ.*आवेदन|లింక్|వెబ్.?సైట్|ఎక్కడ.*దరఖాస్తు", re.I)),
     (QuestionIntent.QUALIFICATION, re.compile(r"qualification|degree|required course|योग्यता|डिग्री|अर्हता|అర్హత|డిగ్రీ", re.I)),
     (QuestionIntent.PROCEDURE, re.compile(r"how (?:do|to).*apply|what.*first|comes after|procedure|steps?|आवेदन कैसे|पहले क्या|प्रक्रिया|దరఖాస్తు ఎలా|మొదట|విధానం", re.I)),

@@ -291,11 +291,11 @@ def test_cross_lingual_lexical_retrieval_uses_concept_expansion():
     assert result and result[0].evidence_id == "hi"
 
 
-def test_generic_retrieval_answer_is_extractive_and_cited():
+def test_retrieved_passages_are_not_misrepresented_as_answers_without_generator():
     result = GroundedQAService().answer("How is scholarship selection decided?", analysis())
-    assert result.answer_mode == AnswerMode.EVIDENCE_RETRIEVAL
-    assert "merit list" in result.answer_text
-    assert result.citations[0].evidence_id == "selection"
+    assert result.answer_mode == AnswerMode.NOT_STATED
+    assert result.answerability == Answerability.UNANSWERABLE
+    assert result.abstained and not result.citations
 
 
 def test_unanswerable_question_abstains():

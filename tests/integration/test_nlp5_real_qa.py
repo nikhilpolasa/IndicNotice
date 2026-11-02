@@ -33,8 +33,10 @@ def test_real_telugu_structured_retrieval_and_abstention():
     telugu = _analyses()["te"]
     service = GroundedQAService()
     deadline = service.answer("దరఖాస్తు చివరి తేదీ ఏమిటి?", telugu)
-    retrieval = service.answer("What is admission preference based on?", telugu)
+    preference = service.answer("What is admission preference based on?", telugu)
     missing = service.answer("పరీక్ష వేదిక ఎక్కడ ఉంది?", telugu)
     assert deadline.answer_mode == AnswerMode.STRUCTURED_FACT and deadline.citations
-    assert retrieval.answer_mode == AnswerMode.EVIDENCE_RETRIEVAL and retrieval.citations
+    assert preference.answer_mode == AnswerMode.STRUCTURED_FACT and preference.citations
+    assert "number of transfers" in preference.answer_text
+    assert {item.page_number for item in preference.citations} == {2}
     assert missing.answer_mode == AnswerMode.NOT_STATED and missing.abstained

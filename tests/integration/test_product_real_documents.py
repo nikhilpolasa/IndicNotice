@@ -37,6 +37,111 @@ def test_real_missing_venue_abstains(real_notice, lang):
     assert answer.abstained and not answer.citations
 
 
+@pytest.fixture(scope="module")
+def real_kvs_notice():
+    path = Path("datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf")
+    return initial_analysis(path.read_bytes(), path.name)
+
+
+@pytest.mark.parametrize("question,expected,page", [
+    ("Is the application online or offline?", "online applications only", 1),
+    ("Which classes are covered by this notice?", "Class I and Balvatika-III", 1),
+    ("Which organization issued the notice?", "Kendriya Vidyalaya Sangathan (KVS)", 1),
+    ("Which category includes children of State Government employees?", "Category III", 2),
+    ("Who comes under Category V?", "all those not covered", 2),
+    ("What determines preference in admission?", "number of transfers", 2),
+    ("आवेदन ऑनलाइन होगा या ऑफलाइन?", "केवल ऑनलाइन", 1),
+    ("దరఖాస్తు చేసుకోవడానికి చివరి తేదీ ఏమిటి?", "2025-03-21", 1),
+])
+def test_real_kvs_factual_qa_is_direct_localized_and_cited(real_kvs_notice, question, expected, page):
+    answer = answer_notice(question, real_kvs_notice)
+    assert expected.casefold() in answer.answer_text.casefold()
+    assert answer.answerability == Answerability.ANSWERABLE
+    assert not answer.abstained
+    assert answer.citations and {item.page_number for item in answer.citations} == {page}
+    assert answer.answer_language == ("hi" if any("\u0900" <= ch <= "\u097f" for ch in question) else "te" if any("\u0c00" <= ch <= "\u0c7f" for ch in question) else "en")
+    assert "Relevant notice text:" not in answer.answer_text
+
+
+@pytest.mark.parametrize("question", [
+    "What is the application fee?",
+    "What documents must I upload?",
+    "What is the minimum age for Class I?",
+    "How many seats are available?",
+])
+def test_real_kvs_unsupported_details_abstain_without_irrelevant_citations(real_kvs_notice, question):
+    answer = answer_notice(question, real_kvs_notice)
+    assert answer.answerability == Answerability.UNANSWERABLE
+    assert answer.abstained and not answer.citations
+
+
+@pytest.mark.parametrize("lang,question", [
+    ("en", "What documents must I upload?"),
+    ("te", "ఏ పత్రాలు సమర్పించాలి?"),
+    ("hi", "कौन से दस्तावेज़ अपलोड करने हैं?"),
+])
+def test_real_kvs_missing_documents_abstain_in_question_language(real_kvs_notice, lang, question):
+    answer = answer_notice(question, real_kvs_notice)
+    expected = {
+        "en": "This information is not stated in this notice.",
+        "te": "ఈ సమాచారం ఈ నోటీసులో పేర్కొనబడలేదు.",
+        "hi": "यह जानकारी इस सूचना में नहीं दी गई है।",
+    }[lang]
+    assert answer.answer_language == lang
+    assert answer.answer_text == expected
+    assert answer.abstained and not answer.citations
+
+
+@pytest.mark.parametrize("lang,question", [
+    ("en", "How many seats are available?"),
+    ("te", "ఎన్ని సీట్లు అందుబాటులో ఉన్నాయి?"),
+    ("hi", "कुल कितनी सीटें हैं?"),
+])
+def test_real_kvs_unstated_seat_count_abstains_in_question_language(real_kvs_notice, lang, question):
+    answer = answer_notice(question, real_kvs_notice)
+    assert answer.answer_language == lang
+    assert answer.abstained and not answer.citations
+
+
+def test_real_kvs_marks_question_qualifies_eligibility_and_cites_official_referral(real_kvs_notice):
+    answer = answer_notice("Is 60% marks enough?", real_kvs_notice)
+    assert answer.answerability == Answerability.PARTIAL
+    assert not answer.abstained
+    assert "cannot be determined" in answer.answer_text
+    assert "official admission guidelines" in answer.answer_text
+    assert {citation.page_number for citation in answer.citations} == {1}
+
+
+def test_cross_lingual_telugu_deadline_question_on_real_hindi_notice():
+    path = Path("datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf")
+    notice = initial_analysis(path.read_bytes(), path.name)
+    answer = answer_notice("దరఖాస్తు చివరి తేదీ ఏమిటి?", notice)
+    deadline = next(d for d in notice.analysis.dates if d.date_type.value == "application_deadline")
+    assert answer.answer_language == "te"
+    assert deadline.value in answer.answer_text
+    assert answer.citations and all(citation.page_number == 1 for citation in answer.citations)
+
+
+def test_cross_lingual_hindi_online_mode_question_on_real_telugu_notice(real_kvs_notice):
+    answer = answer_notice("आवेदन ऑनलाइन होगा या ऑफलाइन?", real_kvs_notice)
+    assert answer.answer_language == "hi"
+    assert "केवल ऑनलाइन" in answer.answer_text
+    assert answer.citations and all(citation.page_number == 1 for citation in answer.citations)
+
+
+@pytest.mark.parametrize("question,expected,language", [
+    ("राज्य सरकार के कर्मचारियों के बच्चों की श्रेणी कौन सी है?", "श्रेणी III:", "hi"),
+    ("రాష్ట్ర ప్రభుత్వ ఉద్యోగుల పిల్లలు ఏ వర్గంలోకి వస్తారు?", "వర్గం III:", "te"),
+    ("श्रेणी V में कौन आते हैं?", "श्रेणी V:", "hi"),
+    ("వర్గం V లో ఎవరు వస్తారు?", "వర్గం V:", "te"),
+])
+def test_real_kvs_category_answers_are_localized_and_grounded(real_kvs_notice, question, expected, language):
+    answer = answer_notice(question, real_kvs_notice)
+    assert answer.answer_language == language
+    assert answer.answer_text.startswith(expected)
+    assert answer.citations and {item.page_number for item in answer.citations} == {2}
+
+
 def test_real_profile_eligibility_is_not_confident_from_initial_subset(real_notice):
     response = answer_notice("Am I eligible?", real_notice,
                              {"marks_percentage": 60, "annual_family_income_inr": 300000})

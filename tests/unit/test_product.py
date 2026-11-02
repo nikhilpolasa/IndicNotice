@@ -10,6 +10,7 @@ from demo import product
 from demo import product_app
 from demo.i18n import COPY, LANGUAGES, tr
 from demo.questions import answer_notice
+from demo.presentation import portal_label
 from services.nlp.qa import QuestionIntent, route_question, Answerability
 from services.nlp.retrieval import LexicalRetriever
 from indicnotice.schemas.evidence import EvidenceSpan
@@ -180,6 +181,37 @@ def test_native_initial_analysis_latency(result):
     assert time.perf_counter() - started < 10
 
 
+def test_real_kvs_issuer_and_program_portals_are_backed_by_matching_source():
+    path = Path("datasets/fixtures/nlp2/telugu/kv_kadapa_admission_2025_telugu.pdf")
+    analysis = product.initial_analysis(path.read_bytes(), path.name).analysis
+    assert analysis.metadata.issuing_authority == "Kendriya Vidyalaya Sangathan (KVS)"
+    spans = {span.evidence_id: span for span in analysis.evidence}
+    issuer = [spans[eid] for eid in analysis.metadata.issuing_authority_evidence_ids]
+    assert issuer and all("Kendriya Vidyalaya Sangathan" in span.text for span in issuer)
+    labels = {item.url: portal_label(item, analysis, "en") for item in analysis.links}
+    assert labels["https://kvsonlineadmission.kvs.gov.in"] == "Class I application portal"
+    assert labels["https://balvatika.kvs.gov.in/"] == "Balvatika-III application portal"
+    for item in analysis.links:
+        assert all(eid in spans for eid in item.evidence_ids)
+
+
+def test_real_scert_issuer_uses_short_source_masthead():
+    path = Path("datasets/fixtures/nlp2/hindi/scert_haryana_nmmss_2025_hindi.pdf")
+    analysis = product.initial_analysis(path.read_bytes(), path.name).analysis
+    assert analysis.metadata.issuing_authority == "SCERT HARYANA, GURUGRAM"
+    span = next(item for item in analysis.evidence if item.evidence_id in analysis.metadata.issuing_authority_evidence_ids)
+    assert "SCERT HARYANA" in span.text
+
+
+def test_product_presentation_copy_is_unicode_and_fully_localized():
+    from demo.presentation import MONTHS
+    assert all(len(MONTHS[language]) == 12 for language in ("en", "te", "hi"))
+    assert all("?" not in month for language in ("te", "hi") for month in MONTHS[language])
+    assert all(len(values) == 3 for values in COPY.values())
+    assert tr("status_closed", "te") != tr("status_closed", "en")
+    assert tr("status_closed", "hi") != tr("status_closed", "en")
+
+
 @pytest.mark.parametrize("language", list(LANGUAGES))
 def test_welcome_ui_renders_and_localizes(language, monkeypatch):
     AppTest = pytest.importorskip("streamlit.testing.v1").AppTest
@@ -282,13 +314,13 @@ def test_conditional_document_answer_does_not_repeat_its_requirement_label(resul
     assert "Conditional · Conditional" not in response.answer_text
 
 
-def test_retrieval_is_presented_as_partial_source_text(result):
+def test_unmatched_question_abstains_instead_of_dumping_retrieved_passages(result):
     from tests.unit.test_nlp5_qa import analysis
     result = replace(result, analysis=analysis())
     response = answer_notice("What is selection based on?", result, language="hi")
-    assert response.answerability == Answerability.PARTIAL
-    assert tr("source_answer", "hi") in response.answer_text
-    assert response.citations
+    assert response.answerability == Answerability.UNANSWERABLE
+    assert response.abstained and not response.citations
+    assert tr("not_stated_answer", "hi") == response.answer_text
 
 
 def test_expired_advanced_budget_never_sends_another_request(monkeypatch):

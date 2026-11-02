@@ -6,6 +6,7 @@ from datetime import date
 from demo.i18n import LANGUAGES, tr
 from demo.pipeline import evidence_for, profile_field_specs, eligibility_outcome
 from demo.product import session_analysis, clear_notice, eligibility_display_state, ADVANCED_MODE
+from demo import presentation
 from demo.questions import answer_notice
 from demo.notices_ui import UI as NOTICE_UI, render_notice_page, text as notice_text
 from services.auth.notices import NoticeLibrary
@@ -38,6 +39,7 @@ def evidence(st, ids, result, lang):
         with st.expander(tr("sources", lang)):
             for span in spans:
                 st.caption(f'{tr("page", lang)} {span["page_number"]}')
+                st.caption(tr("original_source", lang))
                 st.text(span["text"])
 
 
@@ -57,11 +59,11 @@ def rules(st, group, result, lang):
             if isinstance(child, ConditionGroup):
                 rules(st, child, result, lang)
             else:
-                st.text(child.source_text or f'{tr(child.attribute, lang)} {child.comparator.value} {child.value}')
+                st.write(presentation.condition_label(child, lang))
                 if child.applies_when:
                     st.caption(tr("conditional", lang))
                     rules(st, child.applies_when, result, lang)
-                evidence(st, child.evidence_ids, result, lang)
+                presentation.view_source(st, result.analysis, child.evidence_ids, lang)
 
 
 def profile_form(st, result, lang, *, saved_profile=None, account_id=""):
@@ -137,68 +139,15 @@ def render(st, result, page, lang, *, saved_profile=None, account_id=""):
     a = result.analysis
     st.header(tr(page, lang))
     if page == "overview":
-        st.text(a.metadata.title or tr("missing", lang))
-        st.caption(tr("authority", lang))
-        st.text(a.metadata.issuing_authority or tr("missing", lang))
-        st.caption(f'{tr("page", lang)}: {result.ingestion.document.page_count}')
-        evidence(st, a.metadata.title_evidence_ids + a.metadata.issuing_authority_evidence_ids, result, lang)
+        presentation.render_facts(st, a, "overview", lang)
     elif page == "dates":
-        if not a.dates:
-            st.info(tr("missing", lang))
-        for item in a.dates:
-            with st.container(border=True):
-                st.caption(tr(item.date_type.value, lang))
-                st.text(item.value or item.source_text or tr("missing", lang))
-                if item.end_value:
-                    st.text(f'{tr("to", lang)} {item.end_value}')
-                if item.is_tentative:
-                    st.caption(tr("tentative", lang))
-                if item.time:
-                    st.text(item.time)
-                evidence(st, item.evidence_ids, result, lang)
+        presentation.render_facts(st, a, "dates", lang)
     elif page == "fees":
-        if not a.fees:
-            st.info(tr("missing", lang))
-        for item in a.fees:
-            with st.container(border=True):
-                st.write(tr(item.fee_type, lang))
-                st.subheader(tr("missing", lang) if item.amount_inr is None else f"₹{item.amount_inr:,.2f}")
-                if item.applies_to_category:
-                    st.text(f'{tr("applies", lang)}: {item.applies_to_category}')
-                if item.waived_for:
-                    st.text(f'{tr("waived", lang)}: {item.waived_for}')
-                evidence(st, item.evidence_ids, result, lang)
-        actions_by_id = {item.action_id: item for item in a.actions}
-        for action in get_action_execution_order(a.actions):
-            with st.container(border=True):
-                st.text(action.description)
-                for dependency in action.depends_on:
-                    st.text(f'{tr("after", lang)}: {actions_by_id[dependency].description}')
-                if action.applies_when:
-                    rules(st, action.applies_when, result, lang)
-                if action.is_optional:
-                    st.caption(tr("optional", lang))
-                evidence(st, action.evidence_ids, result, lang)
-        for link in a.links:
-            st.text(link.url)
-            evidence(st, link.evidence_ids, result, lang)
+        presentation.render_application(st, a, lang)
     elif page == "documents":
-        if not a.required_documents:
-            st.info(tr("missing", lang))
-        for item in a.required_documents:
-            with st.container(border=True):
-                st.write(tr(item.canonical_name, lang))
-                st.text(item.source_name)
-                st.caption(tr(item.requirement_type.value, lang))
-                if item.alternatives:
-                    st.text(tr("alternatives", lang) + ": " + ", ".join(tr(name, lang) for name in item.alternatives))
-                if item.applies_when:
-                    rules(st, item.applies_when, result, lang)
-                if item.notes:
-                    st.text(item.notes)
-                evidence(st, item.evidence_ids, result, lang)
+        presentation.render_facts(st, a, "documents", lang)
     elif page == "rules":
-        rules(st, a.eligibility, result, lang)
+        presentation.render_facts(st, a, "rules", lang)
     elif page == "check":
         profile_form(st, result, lang, saved_profile=saved_profile, account_id=account_id)
     elif page == "ask":
@@ -208,7 +157,7 @@ def render(st, result, page, lang, *, saved_profile=None, account_id=""):
             ask = st.form_submit_button(tr("ask", lang))
         if ask and question.strip():
             try:
-                st.session_state["qa_response"] = answer_notice(question, result, st.session_state.get("candidate_profile", saved_profile), language=lang)
+                st.session_state["qa_response"] = answer_notice(question, result, st.session_state.get("candidate_profile", saved_profile))
                 st.session_state["qa_input"] = question
             except Exception:
                 LOG.exception("Question answering failed")
@@ -216,17 +165,13 @@ def render(st, result, page, lang, *, saved_profile=None, account_id=""):
         elif ask:
             st.info(tr("question_empty", lang))
         if response := st.session_state.get("qa_response"):
-            if response.answer_language != lang and st.session_state.get("qa_input"):
-                response = answer_notice(st.session_state["qa_input"], result, st.session_state.get("candidate_profile", saved_profile), language=lang)
-                st.session_state["qa_response"] = response
             st.text(response.answer_text)
             for citation in response.citations:
                 with st.expander(f'{tr("page", lang)} {citation.page_number}'):
+                    st.caption(tr("original_source", lang))
                     st.text(citation.text)
     elif page == "sources":
-        for index, span in enumerate(a.evidence, 1):
-            with st.expander(f'{tr("page", lang)} {span.page_number} · {index}'):
-                st.text(span.text)
+        presentation.render_facts(st, a, "sources", lang)
 
 
 def main():
@@ -257,43 +202,48 @@ def main():
     is_admin = auth_store.is_admin(account["account_id"])
     if is_admin:
         sections.append("admin")
-    section = st.radio("IndicNotice", sections,
-                       format_func=lambda key: (f"🔔 {notice_text(key, lang)} ({unread_count})" if key == "notifications" and unread_count else (f"🔔 {notice_text(key, lang)}" if key == "notifications" else notice_text(key, lang))),
-                       horizontal=True, key="library_page", label_visibility="collapsed")
-    with st.sidebar:
+    top_left, top_lang, top_account = st.columns([6, 2, 1])
+    with top_left:
         st.title("IndicNotice")
-        preferred = next((label for label, code in LANGUAGES.items() if code == account["preferred_language"]), "English")
-        chosen = st.selectbox(tr("language", "en"), list(LANGUAGES), index=list(LANGUAGES).index(preferred))
-        lang = LANGUAGES[chosen]
-        if lang != account["preferred_language"]:
-            auth_store.update_language(account["account_id"], lang)
-            account["preferred_language"] = lang
-            # The main navigation is rendered before this sidebar control.
-            # Rerender once so every label uses the persisted language choice.
+        st.caption(tr("tagline", lang))
+    with top_lang:
+        labels = list(LANGUAGES)
+        preferred = next((label for label, code in LANGUAGES.items() if code == account["preferred_language"]), labels[0])
+        chosen = st.selectbox(tr("language", lang), labels, index=labels.index(preferred), key="header-language")
+        selected_lang = LANGUAGES[chosen]
+        if selected_lang != account["preferred_language"]:
+            auth_store.update_language(account["account_id"], selected_lang)
+            account["preferred_language"] = selected_lang
             st.rerun()
-        st.caption(tr("privacy", lang))
-        st.caption(f'{tr("authenticated_notice", lang)}: {account["email"]}')
-        st.link_button(tr("my_profile", lang), "/account/profile")
-        st.link_button(tr("account_settings", lang), "/account/settings")
-        st.link_button(tr("logout", lang), "/auth/logout")
-        uploaded = None
-        analyze = False
-        if section == "read":
-            uploaded = st.file_uploader(tr("upload", lang), type=["pdf"], key=f'notice-upload-{st.session_state.get("upload_epoch", 0)}')
-            digest = sha256(uploaded.getvalue()).hexdigest() if uploaded else None
-            if st.session_state.get("upload_digest") and st.session_state["upload_digest"] != digest:
-                clear_notice(st.session_state)
-            analyze = st.button(tr("analyze", lang), type="primary", disabled=uploaded is None)
-            if st.button(tr("clear", lang)):
-                clear_notice(st.session_state)
-                st.session_state["upload_epoch"] = st.session_state.get("upload_epoch", 0) + 1
-                st.rerun()
-    st.title("IndicNotice")
-    st.caption(tr("tagline", lang))
+    lang = account.get("preferred_language", "en")
+    with top_account:
+        with st.popover(tr("account", lang), use_container_width=True):
+            st.link_button(tr("my_profile", lang), "/account/profile", use_container_width=True)
+            st.link_button(tr("account_settings", lang), "/account/settings", use_container_width=True)
+            st.link_button(tr("logout", lang), "/auth/logout", use_container_width=True)
+    nav_labels = {"read": tr("understand", lang), "explore": notice_text("explore", lang),
+                  "for_you": notice_text("for_you", lang), "notifications": notice_text("notifications", lang),
+                  "details": notice_text("details", lang), "admin": notice_text("admin", lang)}
+    selected_section = st.segmented_control(
+        "IndicNotice", sections,
+        format_func=lambda key: f'{nav_labels[key]} ({unread_count})' if key == "notifications" and unread_count else nav_labels[key],
+        key="library_page", label_visibility="collapsed", selection_mode="single")
+    section = selected_section or st.session_state.get("library_page") or "read"
     if section != "read":
         notice_library = NoticeLibrary(auth_store)
         render_notice_page(st, section, notice_library, auth_store, account, saved_profile, lang)
         return
+    st.header(tr("welcome", lang) if st.session_state.get("demo_result") is None else tr("upload_another", lang))
+    st.write(tr("intro", lang))
+    uploaded = st.file_uploader(tr("upload", lang), type=["pdf"], key=f'notice-upload-{st.session_state.get("upload_epoch", 0)}')
+    digest = sha256(uploaded.getvalue()).hexdigest() if uploaded else None
+    if st.session_state.get("upload_digest") and st.session_state["upload_digest"] != digest:
+        clear_notice(st.session_state)
+    analyze = st.button(tr("analyze", lang), type="primary", disabled=uploaded is None)
+    if st.button(tr("clear", lang)):
+        clear_notice(st.session_state)
+        st.session_state["upload_epoch"] = st.session_state.get("upload_epoch", 0) + 1
+        st.rerun()
     if analyze and uploaded:
         try:
             with st.spinner(tr("working", lang)):
@@ -303,8 +253,6 @@ def main():
             st.error(tr("error", lang))
     result = st.session_state.get("demo_result")
     if result is None:
-        st.header(tr("welcome", lang))
-        st.write(tr("intro", lang))
         return
     status = "review_partial" if result.analysis.warnings else "reviewed"
     if result.mode == ADVANCED_MODE and not any(
@@ -312,8 +260,15 @@ def main():
         for decision in result.hybrid_diagnostics.decisions
     ):
         status = "review_no_additions"
-    st.info(tr(status if result.mode == ADVANCED_MODE else "initial", lang))
+    st.info(tr(status if result.mode == ADVANCED_MODE else "verify_source", lang))
     st.caption(tr("partial", lang))
     pages = ("overview", "dates", "fees", "documents", "rules", "check", "ask", "sources")
-    page = st.radio(tr("overview", lang), pages, format_func=lambda key: tr(key, lang), horizontal=True, label_visibility="collapsed")
+    selected_page = st.segmented_control(
+        tr("notice_sections", lang), pages,
+        default=st.session_state.get("notice_detail_selected", "overview"),
+        format_func=lambda key: tr(key, lang), key="notice-detail-page",
+        label_visibility="collapsed", selection_mode="single")
+    if selected_page is not None:
+        st.session_state["notice_detail_selected"] = selected_page
+    page = selected_page or st.session_state.get("notice_detail_selected", "overview")
     render(st, result, page, lang, saved_profile=saved_profile, account_id=account["account_id"])
